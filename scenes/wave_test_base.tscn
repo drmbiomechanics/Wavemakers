@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://6xhl7mv2nmqn"]
+[gd_scene load_steps=9 format=3 uid="uid://6xhl7mv2nmqn"]
 
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="1_2xlsd"]
+[ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_8whn5"]
 [ext_resource type="Texture2D" uid="uid://cssoasqyx24ox" path="res://sprites/background/WAVES colour.png" id="2_72l33"]
 [ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="2_h4fmw"]
 [ext_resource type="SpriteFrames" uid="uid://c3pw0hnoa05jv" path="res://sprites/spriteframes/swimmers_spriteframe.tres" id="4_0rl7a"]
+[ext_resource type="Texture2D" uid="uid://c4bpaln7e7gt4" path="res://sprites/background/wavemakers_logo.png" id="4_cpxhf"]
 [ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="5_b6atr"]
+[ext_resource type="Theme" uid="uid://csc7fi523g83d" path="res://resources/Button_Theme.tres" id="9_to83j"]
 
 [node name="Wave_Test_Base" type="Node2D"]
+script = ExtResource("1_8whn5")
 
 [node name="Reference_Images" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.9, 0.898611)
@@ -26,17 +30,26 @@ tile_set = ExtResource("5_b6atr")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 262144, 0, 0, 524288, 0, 0, 786432, 0, 0, 1048576, 0, 0, 65536, 65536, 0, 393216, 65536, 0, 720896, 65536, 0, 851968, 65536, 0, 131072, 131072, 0, 327680, 131072, 0, 589824, 131072, 0, 983040, 131072, 0, 196608, 196608, 0, 458752, 196608, 0, 655360, 196608, 0, 917504, 196608, 0, 1048577, 65536, 0, 1048580, 65536, 0, 1048582, 65536, 0, 1048584, 65536, 0, 1048585, 65536, 0, 1048589, 65536, 0, 1048592, 65536, 0, 1048594, 65536, 0, 1048598, 65536, 0, 1048605, 65536, 0, 1048607, 65536, 0, 1048578, 131072, 0, 1048581, 131072, 0, 1048587, 131072, 0, 1048591, 131072, 0, 1048593, 131072, 0, 1048596, 131072, 0, 1048601, 131072, 0, 1048602, 131072, 0, 1048606, 131072, 0, 1048579, 196608, 0, 1048583, 196608, 0, 1048586, 196608, 0, 1048588, 196608, 0, 1048590, 196608, 0, 1048595, 196608, 0, 1048597, 196608, 0, 1048599, 196608, 0, 1048600, 196608, 0, 1048603, 196608, 0, 1048604, 196608, 0, 524295, 196608, 0, 983070, 0, 0, 983071, 0, 0, 917534, 65536, 0, 917535, 65536, 0, 851998, 131072, 0, 851999, 131072, 0, 786462, 196608, 0, 786463, 196608, 0, 720926, 65536, 0, 720927, 65536, 0, 655390, 0, 0, 655391, 0, 0, 589854, 131072, 0, 589855, 131072, 0, 524318, 196608, 0, 524319, 196608, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524291, 0, 0, 524290, 0, 0, 524289, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0)
 
+[node name="Pool_Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(295, 315)
+scale = Vector2(0.636719, 0.409722)
+texture = ExtResource("4_cpxhf")
+centered = false
+
 [node name="Wave_Elements" type="Node2D" parent="."]
 
 [node name="Wave_R1" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(314.844, 610.5)
 rotation = -3.14159
-scale = Vector2(0.0158473, 0.411179)
+scale = Vector2(0.016, 0.411)
 texture = ExtResource("2_72l33")
 centered = false
 flip_v = true
 
 [node name="Wave_R2" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(335.25, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -45,6 +58,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R3" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(355.7, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -53,6 +67,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R4" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(376.15, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -61,6 +76,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R5" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(396.6, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -69,6 +85,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R6" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(417.05, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -77,6 +94,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R7" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(437.5, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -85,6 +103,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R8" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(457.95, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -93,6 +112,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R9" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(478.4, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -101,6 +121,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R10" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(498.85, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -109,6 +130,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R11" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(519.3, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -117,6 +139,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R12" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(539.75, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -125,6 +148,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R13" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(560.2, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -133,6 +157,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R14" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(580.65, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -141,6 +166,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R15" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(601.1, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -149,6 +175,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R16" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(621.55, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -157,6 +184,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R17" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(642, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -165,6 +193,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R18" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(662.45, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -173,6 +202,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R19" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(682.9, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -181,6 +211,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R20" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(703.35, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -189,6 +220,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R21" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(723.8, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -197,6 +229,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R22" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(744.25, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -205,6 +238,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R23" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(764.7, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -213,6 +247,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R24" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(785.15, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -221,6 +256,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R25" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(805.6, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -229,6 +265,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R26" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(826.05, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -237,6 +274,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R27" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(846.5, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -245,6 +283,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R28" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(866.95, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -253,6 +292,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R29" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(887.4, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -261,6 +301,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R30" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(907.85, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -269,6 +310,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R31" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(928.3, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -277,6 +319,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R32" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(948.75, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -285,6 +328,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R33" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(969.2, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -293,6 +337,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R34" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(989.65, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -301,6 +346,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R35" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1010.1, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -309,6 +355,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R36" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1030.55, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -317,6 +364,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R37" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1051, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -325,6 +373,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R38" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1071.45, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -333,6 +382,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R39" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1091.9, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
@@ -341,6 +391,7 @@ centered = false
 flip_v = true
 
 [node name="Wave_R40" type="Sprite2D" parent="Wave_Elements"]
+self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1109.85, 610.5)
 rotation = -3.14159
 scale = Vector2(0.0140447, 0.411)
@@ -355,3 +406,21 @@ sprite_frames = ExtResource("4_0rl7a")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 22)
+anchor_mode = 0
+zoom = Vector2(1.04, 1.04)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 117.0
+offset_top = 87.0
+offset_right = 157.0
+offset_bottom = 127.0
+theme = ExtResource("9_to83j")
+
+[node name="Button" type="Button" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+
+[connection signal="pressed" from="PanelContainer/Button" to="." method="_on_button_pressed"]
