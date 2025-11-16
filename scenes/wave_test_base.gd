@@ -13,22 +13,30 @@ var wave_computed = false
 var counter = 0
 var wave_anim_index = [0]
 var requested_wave = []
-var test_amplitude = 5
-var decay = -0.3
-var test_wavelength = 0.8
-var x_resolution = 0.01
+var test_amplitude = 5 #baseline test is 5; Max = 5, Min = 0.01
+var decay = -0.3 #I think this will stay fixed at -0.3 for this game
+var test_wavelength = 0.8 #baseline test is at 0.8, but that might be the min; Max = 5, Min = 0.8?
+var x_resolution = 0.01 #pretty sure this will be fixed at 0.01 to get the appropriate speed/resolution
 var time = 2
+var test_gap = 5
+var test_bars = 40
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	clear_line_2d()
+	set_line2d(Vector2(0,0))
 	requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
 	#print(requested_wave)
 	requested_wave.reverse()
 	requested_wave_display(requested_wave)
+	#requested_wave_display_reversed(requested_wave)
 	#player_wave = make_wave(5,0.8,-0.3,0.01,2.5) #trying to output player wave to see if it matches???
 	#print(player_wave)
+	test_gap = 5
+	time = 2
+	Engine.max_fps = 30 #slowed for testing, default 60 seems good
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -50,16 +58,24 @@ func _process(delta):
 		elif counter < (wave_anim_index.size()-300):
 			#player_wave = make_wave(5,0.8,-0.3,0.01,2.5) #trying to output player wave to see if it matches???
 			#print(player_wave)
-			play_made_wave2(wave_anim_index,counter,5,0.8,-0.3)
+			play_made_wave2(wave_anim_index,counter,test_amplitude,test_wavelength,decay)
 			#max amp is 5
 			#max wavelength is 5
 			counter += 1
 			#print(counter)
+			if $Requested_Wave_Node/Requested_Wave_Line.position.x < 0:
+				clear_line_2d()
 		else:
 			wave_made = false
 			wave_computed = false
 
 	
+
+func set_line2d(point):
+	$Requested_Wave_Node/Requested_Wave_Line.add_point(point)
+
+func clear_line_2d():
+	$Requested_Wave_Node/Requested_Wave_Line.clear_points()
 
 func player_wave_index_prep(time,resolution,bars,gap):
 	var wave_index = []
@@ -67,14 +83,24 @@ func player_wave_index_prep(time,resolution,bars,gap):
 		wave_index.append(j*resolution)
 	for i in range(bars*gap):
 		wave_index.push_front(0)
+	var last_value = wave_index[-1]
+	print(last_value)
 	for k in range(bars*gap*2):
 		wave_index.append(0)
+#		if last_value == 0:
+#			pass
+#		else:
+#			wave_index.append((last_value+resolution))
+#			last_value = wave_index[-1]
 	return(wave_index)
 	
 func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	var wave_y: float = 0.0
+	var y_zero = 0
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+200])))*sin(2*PI*((wave_index[x_index+200]))/wavelength))
-	print(wave_y)
+	#print(wave_y)
+	var line_pos_x = $Requested_Wave_Node/Requested_Wave_Line.position.x
+	var start_tracking = false
 	$Wave_Elements/Wave_R1.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+195])))*sin(2*PI*((wave_index[x_index+195]))/wavelength))
 	$Wave_Elements/Wave_R2.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -109,12 +135,22 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+120])))*sin(2*PI*((wave_index[x_index+120]))/wavelength))
 	$Wave_Elements/Wave_R17.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+115])))*sin(2*PI*((wave_index[x_index+115]))/wavelength))
+#	if wave_y != 0:
+#		if x_index > 1:
+#			start_tracking = true
+#	if start_tracking == true:
+#		$Requested_Wave_Node/Requested_Wave_Line.position.x = line_pos_x-4.0812
 	$Wave_Elements/Wave_R18.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+110])))*sin(2*PI*((wave_index[x_index+110]))/wavelength))
 	$Wave_Elements/Wave_R19.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+105])))*sin(2*PI*((wave_index[x_index+105]))/wavelength))
 	$Wave_Elements/Wave_R20.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+100])))*sin(2*PI*((wave_index[x_index+100]))/wavelength))
+	if wave_y != 0:
+		if x_index > 1:
+			start_tracking = true
+	if start_tracking == true:
+		$Requested_Wave_Node/Requested_Wave_Line.position.x = line_pos_x-4.0812# this value to be changed, also when these if functions start may need to be tweaked
 	$Wave_Elements/Wave_R21.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+95])))*sin(2*PI*((wave_index[x_index+95]))/wavelength))
 	$Wave_Elements/Wave_R22.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -156,6 +192,8 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	$Wave_Elements/Wave_R40.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+20])))*sin(2*PI*((wave_index[x_index+20]))/wavelength))
 	$Swimmer_1.position = Vector2(1035,((wave_y*pixel_slope)+pixel_intercept))
+	wave_y = (amplitude*exp(decay*((wave_index[x_index+105])))*sin(2*PI*((wave_index[x_index+105]))/wavelength))
+	$Swimmer_2.position = Vector2(685.496,((wave_y*pixel_slope)+pixel_intercept))
 
 func test_sine_wave(x,amp):
 	var y_wave: float = 0.0
@@ -205,6 +243,7 @@ func test_sine_wave(x,amp):
 	$Wave_Elements/Wave_R39.scale.y = (((amp*sin(x+x_step*190))*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R40.scale.y = (((amp*sin(x+x_step*195))*scale_slope)+scale_intercept)
 	$Swimmer_1.position = Vector2(1035,(((amp*sin(x+x_step*180))*pixel_slope)+pixel_intercept))
+	$Swimmer_2.position = Vector2(685.496,(((amp*sin(x+x_step*80))*pixel_slope)+pixel_intercept))
 	
 func test_decay_wave(x,amp,wavelength,decay):
 	var y_wave: float = 0.0
@@ -256,47 +295,175 @@ func test_decay_wave(x,amp,wavelength,decay):
 	$Swimmer_1.position = Vector2(1035,(((amp*sin(x+x_step*180))*pixel_slope)+pixel_intercept))
 	
 func requested_wave_display(wave):
+	var baseline_x = $Requested_Wave_Node/Swimmer_Request_1.position.x
+	var baseline_y = $Requested_Wave_Node/Swimmer_Request_1.position.y
 	$Requested_Wave_Node/Swimmer_Request_1.position.y = ((wave[0]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_1.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_1.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_2.position.y = ((wave[5]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_2.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_2.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_3.position.y = ((wave[10]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_3.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_3.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_4.position.y = ((wave[15]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_4.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_4.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_5.position.y = ((wave[20]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_5.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_5.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_6.position.y = ((wave[25]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_6.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_6.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_7.position.y = ((wave[30]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_7.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_7.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_8.position.y = ((wave[35]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_8.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_8.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_9.position.y = ((wave[40]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_9.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_9.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_10.position.y = ((wave[45]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_10.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_10.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_11.position.y = ((wave[50]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_11.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_11.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_12.position.y = ((wave[55]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_12.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_12.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_13.position.y = ((wave[60]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_13.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_13.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_14.position.y = ((wave[65]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_14.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_14.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_15.position.y = ((wave[70]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_15.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_15.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_16.position.y = ((wave[75]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_16.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_16.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_17.position.y = ((wave[80]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_17.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_17.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_18.position.y = ((wave[85]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_18.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_18.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_19.position.y = ((wave[90]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_19.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_19.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_20.position.y = ((wave[95]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_20.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_20.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_21.position.y = ((wave[100]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_21.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_21.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_22.position.y = ((wave[105]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_22.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_22.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_23.position.y = ((wave[110]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_23.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_23.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_24.position.y = ((wave[115]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_24.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_24.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_25.position.y = ((wave[120]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_25.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_25.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_26.position.y = ((wave[125]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_26.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_26.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_27.position.y = ((wave[130]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_27.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_27.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_28.position.y = ((wave[135]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_28.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_28.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_29.position.y = ((wave[140]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_29.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_29.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_30.position.y = ((wave[145]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_30.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_30.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_31.position.y = ((wave[150]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_31.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_31.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_32.position.y = ((wave[155]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_32.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_32.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_33.position.y = ((wave[160]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_33.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_33.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_34.position.y = ((wave[165]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_34.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_34.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_35.position.y = ((wave[170]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_35.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_35.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_36.position.y = ((wave[175]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_36.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_36.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_37.position.y = ((wave[180]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_37.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_37.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_38.position.y = ((wave[185]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_38.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_38.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_39.position.y = ((wave[190]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_39.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_39.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_40.position.y = ((wave[195]*pixel_slope)+pixel_intercept)
-	pass
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_40.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_40.position.y-baseline_y))
+	
+func requested_wave_display_reversed(wave):
+	var baseline_x = 359#$Requested_Wave_Node/Swimmer_Request_1.position.x
+	var baseline_y = 314.884#$Requested_Wave_Node/Swimmer_Request_1.position.y
+	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_1.position.x-baseline_x-10.203,$Requested_Wave_Node/Swimmer_Request_1.position.y-baseline_y))
+	set_line2d(Vector2(359-baseline_x-10.203,314.884-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_1.position.y = ((wave[195]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_1.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_1.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_2.position.y = ((wave[190]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_2.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_2.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_3.position.y = ((wave[185]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_3.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_3.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_4.position.y = ((wave[180]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_4.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_4.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_5.position.y = ((wave[175]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_5.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_5.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_6.position.y = ((wave[170]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_6.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_6.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_7.position.y = ((wave[165]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_7.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_7.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_8.position.y = ((wave[160]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_8.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_8.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_9.position.y = ((wave[155]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_9.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_9.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_10.position.y = ((wave[150]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_10.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_10.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_11.position.y = ((wave[145]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_11.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_11.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_12.position.y = ((wave[140]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_12.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_12.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_13.position.y = ((wave[135]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_13.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_13.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_14.position.y = ((wave[130]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_14.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_14.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_15.position.y = ((wave[125]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_15.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_15.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_16.position.y = ((wave[120]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_16.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_16.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_17.position.y = ((wave[115]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_17.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_17.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_18.position.y = ((wave[110]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_18.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_18.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_19.position.y = ((wave[105]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_19.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_19.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_20.position.y = ((wave[100]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_20.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_20.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_21.position.y = ((wave[95]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_21.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_21.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_22.position.y = ((wave[90]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_22.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_22.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_23.position.y = ((wave[85]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_23.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_23.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_24.position.y = ((wave[80]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_24.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_24.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_25.position.y = ((wave[75]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_25.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_25.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_26.position.y = ((wave[70]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_26.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_26.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_27.position.y = ((wave[65]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_27.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_27.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_28.position.y = ((wave[60]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_28.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_28.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_29.position.y = ((wave[55]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_29.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_29.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_30.position.y = ((wave[50]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_30.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_30.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_31.position.y = ((wave[45]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_31.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_31.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_32.position.y = ((wave[40]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_32.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_32.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_33.position.y = ((wave[35]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_33.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_33.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_34.position.y = ((wave[30]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_34.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_34.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_35.position.y = ((wave[25]*pixel_slope)+pixel_intercept)
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_35.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_35.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_36.position.y = ((wave[20]*pixel_slope)+pixel_intercept)
+	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_36.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_36.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_37.position.y = ((wave[15]*pixel_slope)+pixel_intercept)
+	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_37.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_37.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_38.position.y = ((wave[10]*pixel_slope)+pixel_intercept)
+	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_38.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_38.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_39.position.y = ((wave[5]*pixel_slope)+pixel_intercept)
+	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_39.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_39.position.y-baseline_y))
+	$Requested_Wave_Node/Swimmer_Request_40.position.y = ((wave[0]*pixel_slope)+pixel_intercept)
+	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_40.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_40.position.y-baseline_y))
+
 
 func wave_check(wave): # use this to display the requested wave? Or something similar
 	$Wave_Elements/Wave_R1.scale.y = ((wave[0]*scale_slope)+scale_intercept)
@@ -339,8 +506,49 @@ func wave_check(wave): # use this to display the requested wave? Or something si
 	$Wave_Elements/Wave_R38.scale.y = ((wave[37]*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R39.scale.y = ((wave[38]*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R40.scale.y = ((wave[39]*scale_slope)+scale_intercept)
-	$Swimmer_1.position = Vector2(1035,((wave[36]*pixel_slope)+pixel_intercept))
+	#$Swimmer_1.position = Vector2(1035,((wave[36]*pixel_slope)+pixel_intercept))
 
+func wave_check_reversed(wave): # not sure if needed
+	$Wave_Elements/Wave_R1.scale.y = ((wave[39]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R2.scale.y = ((wave[38]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R3.scale.y = ((wave[37]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R4.scale.y = ((wave[36]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R5.scale.y = ((wave[35]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R6.scale.y = ((wave[34]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R7.scale.y = ((wave[33]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R8.scale.y = ((wave[32]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R9.scale.y = ((wave[31]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R10.scale.y = ((wave[30]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R11.scale.y = ((wave[29]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R12.scale.y = ((wave[28]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R13.scale.y = ((wave[27]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R14.scale.y = ((wave[26]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R15.scale.y = ((wave[25]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R16.scale.y = ((wave[24]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R17.scale.y = ((wave[23]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R18.scale.y = ((wave[22]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R19.scale.y = ((wave[21]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R20.scale.y = ((wave[20]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R21.scale.y = ((wave[19]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R22.scale.y = ((wave[18]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R23.scale.y = ((wave[17]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R24.scale.y = ((wave[16]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R25.scale.y = ((wave[15]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R26.scale.y = ((wave[14]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R27.scale.y = ((wave[13]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R28.scale.y = ((wave[12]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R29.scale.y = ((wave[11]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R30.scale.y = ((wave[10]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R31.scale.y = ((wave[9]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R32.scale.y = ((wave[8]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R33.scale.y = ((wave[7]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R34.scale.y = ((wave[6]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R35.scale.y = ((wave[5]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R36.scale.y = ((wave[4]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R37.scale.y = ((wave[3]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R38.scale.y = ((wave[2]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R39.scale.y = ((wave[1]*scale_slope)+scale_intercept)
+	$Wave_Elements/Wave_R40.scale.y = ((wave[0]*scale_slope)+scale_intercept)
 	
 func make_wave(amplitude,wavelength,decay,resolution,time):
 	var wave = []
@@ -421,6 +629,10 @@ func play_made_wave(player_wave_anim,index):
 func _on_button_pressed():
 	var wave = []
 	var wave_anim = []
+	$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(359,314.884)
+	clear_line_2d()
+	requested_wave_display_reversed(requested_wave)
+	$Requested_Wave_Node/Requested_Wave_Line.position = Vector2($Swimmer_2.position.x+10.203,314.884)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
 	wave = make_wave(5,1,-0.3,0.025,6)
 #	var y: float = 0.0
 #	for x in range(0, (5/0.01)):
