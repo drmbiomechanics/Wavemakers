@@ -13,14 +13,22 @@ var wave_computed = false
 var counter = 0
 var wave_anim_index = [0]
 var requested_wave = []
+var test_amplitude = 5
+var decay = -0.3
+var test_wavelength = 0.8
+var x_resolution = 0.01
+var time = 2
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	requested_wave = make_wave(5,1,-0.3,0.025,5)
-	print(requested_wave)
+	requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
+	#print(requested_wave)
 	requested_wave.reverse()
 	requested_wave_display(requested_wave)
-	
+	#player_wave = make_wave(5,0.8,-0.3,0.01,2.5) #trying to output player wave to see if it matches???
+	#print(player_wave)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,16 +42,19 @@ func _process(delta):
 		#print("wave_made")
 		if wave_computed == false:
 			print("Starting compute")
-			wave_anim_index = player_wave_index_prep(0.5,0.01,40,5)
-			print(wave_anim_index.size())
+			wave_anim_index = player_wave_index_prep(0.4,x_resolution,40,5) # this is likely to always be fixed, and time should be fixed for the other functions as well
+			#print(wave_anim_index)
+			#print(wave_anim_index.size())
 			x_for_waves = 0
 			wave_computed = true
 		elif counter < (wave_anim_index.size()-300):
-			play_made_wave2(wave_anim_index,counter,5,0.8,-0.3,0.025)
+			#player_wave = make_wave(5,0.8,-0.3,0.01,2.5) #trying to output player wave to see if it matches???
+			#print(player_wave)
+			play_made_wave2(wave_anim_index,counter,5,0.8,-0.3)
 			#max amp is 5
 			#max wavelength is 5
 			counter += 1
-			print(counter)
+			#print(counter)
 		else:
 			wave_made = false
 			wave_computed = false
@@ -60,9 +71,10 @@ func player_wave_index_prep(time,resolution,bars,gap):
 		wave_index.append(0)
 	return(wave_index)
 	
-func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay,resolution):
+func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	var wave_y: float = 0.0
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+200])))*sin(2*PI*((wave_index[x_index+200]))/wavelength))
+	print(wave_y)
 	$Wave_Elements/Wave_R1.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+195])))*sin(2*PI*((wave_index[x_index+195]))/wavelength))
 	$Wave_Elements/Wave_R2.scale.y = ((wave_y*scale_slope)+scale_intercept)
