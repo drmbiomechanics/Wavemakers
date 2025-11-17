@@ -19,4 +19,6 @@ Button/fonts/font = ExtResource("1_rhqtc")
 Button/styles/hover = SubResource("StyleBoxFlat_dtb1w")
 Button/styles/normal = SubResource("StyleBoxFlat_p8pe7")
 Button/styles/pressed = SubResource("StyleBoxFlat_px1v7")
+Label/font_sizes/font_size = 15
+Label/fonts/font = ExtResource("1_rhqtc")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_o8177")

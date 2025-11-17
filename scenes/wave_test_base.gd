@@ -14,15 +14,15 @@ var wave_computed = false
 var counter = 0
 var wave_anim_index = [0]
 var requested_wave = []
-var test_amplitude = 3 #baseline test is 5; Max = 5, Min = 0.01
+var test_amplitude = 5 #baseline test is 5; Max = 5, Min = 0.01
 var decay = -0.5 #I think this will stay fixed at -0.3 for this game
-var test_wavelength = 1.5 #baseline test is at 0.8, but that might be the min; Max = 5, Min = 0.8?
+var test_wavelength = 0.8 #baseline test is at 0.8, but that might be the min; Max = 5, Min = 0.8?
 var x_resolution = 0.01 #pretty sure this will be fixed at 0.01 to get the appropriate speed/resolution
 var time = 2
 var test_gap = 5
 var test_bars = 40
-var player_amplitude = 3
-var player_wavelength = 1.5
+var player_amplitude = 5
+var player_wavelength = 0.8
 var requested_wave_to_score = []
 var sc = 0
 var active_swimmer = 1
@@ -32,7 +32,7 @@ var active_swimmer = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	clear_line_2d()
-	set_line2d(Vector2(0,0))
+	#set_line2d(Vector2(0,0))
 	requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
 	#print(requested_wave)
 	requested_wave.reverse()
@@ -43,7 +43,7 @@ func _ready():
 	#print(player_wave)
 	test_gap = 5
 	time = 2
-	Engine.max_fps = 30 #slowed for testing, default 60 seems good
+	Engine.max_fps = 30#slowed for testing, default 60 seems good
 	score = 0
 
 
@@ -71,11 +71,23 @@ func _process(delta):
 			#max wavelength is 5
 			counter += 1
 			#print(counter)
-			if $Requested_Wave_Node/Requested_Wave_Line.position.x < 0:
-				clear_line_2d()
+			if active_swimmer == 1:
+				if $Requested_Wave_Node/Requested_Wave_Line.position.x < -160:
+					clear_line_2d()
+			elif active_swimmer == 2:
+				if $Requested_Wave_Node/Requested_Wave_Line.position.x < 0:
+					clear_line_2d()
+			elif active_swimmer == 3:
+				if $Requested_Wave_Node/Requested_Wave_Line.position.x < 120:
+					clear_line_2d()
 		else:
 			wave_made = false
 			wave_computed = false
+			$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(359,314.884)
+			requested_wave_display(requested_wave)
+			active_swimmer = 2
+			hide_score_bands(true)
+			#$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(359,314.884)
 
 	
 
@@ -178,8 +190,6 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+145])))*sin(2*PI*((wave_index[x_index+145]))/wavelength))
 	$Wave_Elements/Wave_R12.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+140])))*sin(2*PI*((wave_index[x_index+140]))/wavelength))
-	$Wave_Elements/Wave_R13.scale.y = ((wave_y*scale_slope)+scale_intercept)
-	wave_y = (amplitude*exp(decay*((wave_index[x_index+135])))*sin(2*PI*((wave_index[x_index+135]))/wavelength))
 	if wave_y != 0 and active_swimmer == 1:
 		if x_index > 1:
 			start_tracking = true
@@ -198,6 +208,8 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 		score += score_array[sc]
 		print(score)
 		sc += 1
+	$Wave_Elements/Wave_R13.scale.y = ((wave_y*scale_slope)+scale_intercept)
+	wave_y = (amplitude*exp(decay*((wave_index[x_index+135])))*sin(2*PI*((wave_index[x_index+135]))/wavelength))
 	$Wave_Elements/Wave_R14.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+130])))*sin(2*PI*((wave_index[x_index+130]))/wavelength))
 	$Wave_Elements/Wave_R15.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -215,8 +227,6 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+110])))*sin(2*PI*((wave_index[x_index+110]))/wavelength))
 	$Wave_Elements/Wave_R19.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+105])))*sin(2*PI*((wave_index[x_index+105]))/wavelength))
-	$Wave_Elements/Wave_R20.scale.y = ((wave_y*scale_slope)+scale_intercept)
-	wave_y = (amplitude*exp(decay*((wave_index[x_index+100])))*sin(2*PI*((wave_index[x_index+100]))/wavelength))
 	if wave_y != 0 and active_swimmer == 2:
 		if x_index > 1:
 			start_tracking = true
@@ -235,6 +245,8 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 		score += score_array[sc]
 		print(score)
 		sc += 1
+	$Wave_Elements/Wave_R20.scale.y = ((wave_y*scale_slope)+scale_intercept)
+	wave_y = (amplitude*exp(decay*((wave_index[x_index+100])))*sin(2*PI*((wave_index[x_index+100]))/wavelength))
 	$Wave_Elements/Wave_R21.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+95])))*sin(2*PI*((wave_index[x_index+95]))/wavelength))
 	$Wave_Elements/Wave_R22.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -400,8 +412,8 @@ func test_decay_wave(x,amp,wavelength,decay):
 	$Swimmer_1.position = Vector2(848.744,(((amp*sin(x+x_step*180))*pixel_slope)+pixel_intercept))
 	
 func requested_wave_display(wave):
-	var baseline_x = $Requested_Wave_Node/Swimmer_Request_1.position.x
-	var baseline_y = $Requested_Wave_Node/Swimmer_Request_1.position.y
+	var baseline_x = 359#$Requested_Wave_Node/Swimmer_Request_1.position.x
+	var baseline_y = 314.884#$Requested_Wave_Node/Swimmer_Request_1.position.y
 	$Requested_Wave_Node/Swimmer_Request_1.position.y = ((wave[0]*pixel_slope)+pixel_intercept)
 	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_1.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_1.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_2.position.y = ((wave[5]*pixel_slope)+pixel_intercept)
@@ -745,7 +757,7 @@ func _on_button_pressed():
 	requested_wave_display_reversed(requested_wave)
 	sc = 0
 	if active_swimmer == 1:
-		$Requested_Wave_Node/Requested_Wave_Line.position = Vector2($Swimmer_1.position.x+10.203,314.884)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
+		$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(542.654+10.203,315)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
 		$Requested_Wave_Node/Requested_Wave_25_upper.position = Vector2($Swimmer_1.position.x+10.203,302.05)
 		$Requested_Wave_Node/Requested_Wave_50_upper.position = Vector2($Swimmer_1.position.x+10.203,289.1)
 		$Requested_Wave_Node/Requested_Wave_100_upper.position = Vector2($Swimmer_1.position.x+10.203,263.2)
@@ -803,3 +815,45 @@ func _on_button_pressed():
 #	x_for_waves = 0
 
 
+
+func _on_p_amp_spin_box_value_changed(value):
+	player_amplitude = get_node("P_Amp_SB_Container/P_Amp_SpinBox").get_value()
+	print("Player Amplitude Changed to: " + str(player_amplitude))
+	
+
+
+
+func _on_p_wavelength_spin_box_value_changed(value):
+	player_wavelength = get_node("P_Wavelength_SB_Container/P_Wavelength_SpinBox").get_value()
+	print("Player Wavelength Changed to: " + str(player_wavelength))
+
+
+func _on_r_amp_spin_box_value_changed(value):
+	test_amplitude = get_node("R_Amp_SB_Container/R_Amp_SpinBox").get_value()
+	print("Requested Amplitude Changed to: " + str(test_amplitude))
+	clear_line_2d()
+	requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
+	#print(requested_wave)
+	requested_wave.reverse()
+	requested_wave_display(requested_wave)
+
+
+
+func _on_r_wavelength_spin_box_value_changed(value):
+	test_wavelength = get_node("R_Wavelength_SB_Container/R_Wavelength_SpinBox").get_value()
+	print("Requested Wavelength Changed to: " + str(test_wavelength))
+	clear_line_2d()
+	requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
+	#print(requested_wave)
+	requested_wave.reverse()
+	requested_wave_display(requested_wave)
+
+
+func _on_decay_spin_box_value_changed(value):
+	decay = get_node("Decay_SB_Container/Decay_SpinBox").get_value()
+	print("Decay Changed to: " + str(decay))
+
+
+func _on_active_swimmer_spin_box_value_changed(value):
+	active_swimmer = get_node("Active_Swimmer_SB_Container/Active_Swimmer_SpinBox").get_value()
+	print("Decay Changed to: " + str(active_swimmer))

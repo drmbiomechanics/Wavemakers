@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6xhl7mv2nmqn"]
+[gd_scene load_steps=10 format=3 uid="uid://6xhl7mv2nmqn"]
 
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="1_2xlsd"]
 [ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_8whn5"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://c4bpaln7e7gt4" path="res://sprites/background/wavemakers_logo.png" id="4_cpxhf"]
 [ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="5_b6atr"]
 [ext_resource type="Theme" uid="uid://csc7fi523g83d" path="res://resources/Button_Theme.tres" id="9_to83j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ju0f"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Wave_Test_Base" type="Node2D"]
 script = ExtResource("1_8whn5")
@@ -403,16 +406,190 @@ position = Vector2(0, 7)
 anchor_mode = 0
 zoom = Vector2(1.04, 1.04)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-offset_left = 117.0
-offset_top = 87.0
-offset_right = 157.0
-offset_bottom = 127.0
+[node name="Button_Container" type="PanelContainer" parent="."]
+offset_left = 116.0
+offset_top = 256.0
+offset_right = 156.0
+offset_bottom = 296.0
 theme = ExtResource("9_to83j")
 
-[node name="Button" type="Button" parent="PanelContainer"]
+[node name="Button" type="Button" parent="Button_Container"]
 layout_mode = 2
 theme = ExtResource("9_to83j")
+text = "GO"
+
+[node name="P_Amp_SB_Container" type="PanelContainer" parent="."]
+offset_left = 212.0
+offset_top = 18.0
+offset_right = 295.063
+offset_bottom = 58.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="P_Amp_SpinBox" type="SpinBox" parent="P_Amp_SB_Container"]
+layout_mode = 2
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 5.0
+alignment = 1
+
+[node name="P_Wavelength_SB_Container" type="PanelContainer" parent="."]
+offset_left = 212.0
+offset_top = 58.0
+offset_right = 295.063
+offset_bottom = 98.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="P_Wavelength_SpinBox" type="SpinBox" parent="P_Wavelength_SB_Container"]
+layout_mode = 2
+min_value = 0.5
+max_value = 5.0
+step = 0.25
+value = 0.75
+alignment = 1
+
+[node name="R_Amp_SB_Container" type="PanelContainer" parent="."]
+offset_left = 212.0
+offset_top = 97.0
+offset_right = 295.063
+offset_bottom = 137.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="R_Amp_SpinBox" type="SpinBox" parent="R_Amp_SB_Container"]
+layout_mode = 2
+min_value = 0.1
+max_value = 5.0
+step = 0.1
+value = 5.0
+alignment = 1
+
+[node name="R_Wavelength_SB_Container" type="PanelContainer" parent="."]
+offset_left = 212.0
+offset_top = 137.0
+offset_right = 295.063
+offset_bottom = 177.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="R_Wavelength_SpinBox" type="SpinBox" parent="R_Wavelength_SB_Container"]
+layout_mode = 2
+min_value = 0.5
+max_value = 5.0
+step = 0.25
+value = 0.75
+alignment = 1
+
+[node name="Decay_SB_Container" type="PanelContainer" parent="."]
+offset_left = 212.0
+offset_top = 177.0
+offset_right = 295.063
+offset_bottom = 217.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="Decay_SpinBox" type="SpinBox" parent="Decay_SB_Container"]
+layout_mode = 2
+min_value = -1.0
+max_value = -0.5
+step = 0.1
+value = -0.5
+alignment = 1
+
+[node name="Active_Swimmer_SB_Container" type="PanelContainer" parent="."]
+offset_left = 212.0
+offset_top = 217.0
+offset_right = 295.063
+offset_bottom = 257.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="Active_Swimmer_SpinBox" type="SpinBox" parent="Active_Swimmer_SB_Container"]
+layout_mode = 2
+min_value = 1.0
+max_value = 3.0
+value = 1.0
+alignment = 1
+
+[node name="P_Amp_Label_Container" type="PanelContainer" parent="."]
+offset_left = 36.0
+offset_top = 18.0
+offset_right = 221.0
+offset_bottom = 58.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="P_Amplitude_Label" type="Label" parent="P_Amp_Label_Container"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+text = "Player Amplitude:"
+
+[node name="P_Wavelength_Label_Container" type="PanelContainer" parent="."]
+offset_left = 36.0
+offset_top = 58.0
+offset_right = 221.0
+offset_bottom = 98.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="P_Wavelength_Label" type="Label" parent="P_Wavelength_Label_Container"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+text = "Player Wavelength:"
+
+[node name="R_Amp_Label_Container" type="PanelContainer" parent="."]
+offset_left = 36.0
+offset_top = 97.0
+offset_right = 221.0
+offset_bottom = 137.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="R_Amplitude_Label" type="Label" parent="R_Amp_Label_Container"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+text = "Requested Amplitude:"
+
+[node name="R_Wavelength_Label_Container" type="PanelContainer" parent="."]
+offset_left = 36.0
+offset_top = 137.0
+offset_right = 212.0
+offset_bottom = 177.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="R_Wavelength_Label" type="Label" parent="R_Wavelength_Label_Container"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+text = "Requested Wavelength:"
+
+[node name="Decay_Label_Container" type="PanelContainer" parent="."]
+offset_left = 36.0
+offset_top = 177.0
+offset_right = 221.0
+offset_bottom = 217.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="Decay_Label" type="Label" parent="Decay_Label_Container"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+text = "Decay (experimental)"
+
+[node name="Active_Swimmer_Label_Container" type="PanelContainer" parent="."]
+offset_left = 36.0
+offset_top = 217.0
+offset_right = 221.0
+offset_bottom = 257.0
+theme = ExtResource("9_to83j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
+
+[node name="Active_Swimmer_Label" type="Label" parent="Active_Swimmer_Label_Container"]
+layout_mode = 2
+theme = ExtResource("9_to83j")
+text = "Active Swimmer"
 
 [node name="Requested_Wave_Node" type="Node2D" parent="."]
 
@@ -822,51 +999,61 @@ width = 5.0
 default_color = Color(0, 1, 0, 1)
 
 [node name="Requested_Wave_25_upper" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 302.05)
 width = 2.0
 default_color = Color(1, 1, 0, 1)
 
 [node name="Requested_Wave_25_lower" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 327.95)
 width = 2.0
 default_color = Color(1, 1, 0, 1)
 
 [node name="Requested_Wave_50_upper" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 289.1)
 width = 2.0
 default_color = Color(1, 0.486275, 0, 1)
 
 [node name="Requested_Wave_50_lower" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 340.9)
 width = 2.0
 default_color = Color(1, 0.486275, 0, 1)
 
 [node name="Requested_Wave_100_upper" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 263.2)
 width = 2.0
 default_color = Color(1, 0.486275, 0.839216, 1)
 
 [node name="Requested_Wave_100_lower" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 366.8)
 width = 2.0
 default_color = Color(1, 0.486275, 0.839216, 1)
 
 [node name="Requested_Wave_150_upper" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 237.3)
 width = 2.0
 default_color = Color(1, 0, 0.839216, 1)
 
 [node name="Requested_Wave_150_lower" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 392.7)
 width = 2.0
 default_color = Color(1, 0, 0.839216, 1)
 
 [node name="Requested_Wave_200_upper" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 211.4)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
 
 [node name="Requested_Wave_200_lower" type="Line2D" parent="Requested_Wave_Node"]
+visible = false
 position = Vector2(359, 418.6)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
@@ -895,4 +1082,10 @@ animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
 
-[connection signal="pressed" from="PanelContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button_Container/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="P_Amp_SB_Container/P_Amp_SpinBox" to="." method="_on_p_amp_spin_box_value_changed"]
+[connection signal="value_changed" from="P_Wavelength_SB_Container/P_Wavelength_SpinBox" to="." method="_on_p_wavelength_spin_box_value_changed"]
+[connection signal="value_changed" from="R_Amp_SB_Container/R_Amp_SpinBox" to="." method="_on_r_amp_spin_box_value_changed"]
+[connection signal="value_changed" from="R_Wavelength_SB_Container/R_Wavelength_SpinBox" to="." method="_on_r_wavelength_spin_box_value_changed"]
+[connection signal="value_changed" from="Decay_SB_Container/Decay_SpinBox" to="." method="_on_decay_spin_box_value_changed"]
+[connection signal="value_changed" from="Active_Swimmer_SB_Container/Active_Swimmer_SpinBox" to="." method="_on_active_swimmer_spin_box_value_changed"]
