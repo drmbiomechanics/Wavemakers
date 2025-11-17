@@ -14,17 +14,18 @@ var wave_computed = false
 var counter = 0
 var wave_anim_index = [0]
 var requested_wave = []
-var test_amplitude = 5 #baseline test is 5; Max = 5, Min = 0.01
-var decay = -0.3 #I think this will stay fixed at -0.3 for this game
-var test_wavelength = 0.8 #baseline test is at 0.8, but that might be the min; Max = 5, Min = 0.8?
+var test_amplitude = 3 #baseline test is 5; Max = 5, Min = 0.01
+var decay = -0.5 #I think this will stay fixed at -0.3 for this game
+var test_wavelength = 1.5 #baseline test is at 0.8, but that might be the min; Max = 5, Min = 0.8?
 var x_resolution = 0.01 #pretty sure this will be fixed at 0.01 to get the appropriate speed/resolution
 var time = 2
 var test_gap = 5
 var test_bars = 40
-var player_amplitude = 5
-var player_wavelength = 0.8
+var player_amplitude = 3
+var player_wavelength = 1.5
 var requested_wave_to_score = []
 var sc = 0
+var active_swimmer = 1
 
 
 
@@ -179,6 +180,24 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+140])))*sin(2*PI*((wave_index[x_index+140]))/wavelength))
 	$Wave_Elements/Wave_R13.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+135])))*sin(2*PI*((wave_index[x_index+135]))/wavelength))
+	if wave_y != 0 and active_swimmer == 1:
+		if x_index > 1:
+			start_tracking = true
+	if start_tracking == true and active_swimmer == 1:
+		$Requested_Wave_Node/Requested_Wave_Line.position.x = line_pos_x-4.0812# this value to be changed, also when these if functions start may need to be tweaked
+		$Requested_Wave_Node/Requested_Wave_25_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_50_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_100_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_150_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_200_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_25_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_50_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_100_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_150_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_200_lower.position.x = line_pos_x-4.0812
+		score += score_array[sc]
+		print(score)
+		sc += 1
 	$Wave_Elements/Wave_R14.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+130])))*sin(2*PI*((wave_index[x_index+130]))/wavelength))
 	$Wave_Elements/Wave_R15.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -198,10 +217,10 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+105])))*sin(2*PI*((wave_index[x_index+105]))/wavelength))
 	$Wave_Elements/Wave_R20.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+100])))*sin(2*PI*((wave_index[x_index+100]))/wavelength))
-	if wave_y != 0:
+	if wave_y != 0 and active_swimmer == 2:
 		if x_index > 1:
 			start_tracking = true
-	if start_tracking == true:
+	if start_tracking == true and active_swimmer == 2:
 		$Requested_Wave_Node/Requested_Wave_Line.position.x = line_pos_x-4.0812# this value to be changed, also when these if functions start may need to be tweaked
 		$Requested_Wave_Node/Requested_Wave_25_upper.position.x = line_pos_x-4.0812
 		$Requested_Wave_Node/Requested_Wave_50_upper.position.x = line_pos_x-4.0812
@@ -216,7 +235,6 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 		score += score_array[sc]
 		print(score)
 		sc += 1
-		
 	$Wave_Elements/Wave_R21.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+95])))*sin(2*PI*((wave_index[x_index+95]))/wavelength))
 	$Wave_Elements/Wave_R22.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -231,6 +249,24 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+70])))*sin(2*PI*((wave_index[x_index+70]))/wavelength))
 	$Wave_Elements/Wave_R27.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+65])))*sin(2*PI*((wave_index[x_index+65]))/wavelength))
+	if wave_y != 0 and active_swimmer == 3:
+		if x_index > 1:
+			start_tracking = true
+	if start_tracking == true and active_swimmer == 3:
+		$Requested_Wave_Node/Requested_Wave_Line.position.x = line_pos_x-4.0812# this value to be changed, also when these if functions start may need to be tweaked
+		$Requested_Wave_Node/Requested_Wave_25_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_50_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_100_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_150_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_200_upper.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_25_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_50_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_100_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_150_lower.position.x = line_pos_x-4.0812
+		$Requested_Wave_Node/Requested_Wave_200_lower.position.x = line_pos_x-4.0812
+		score += score_array[sc]
+		print(score)
+		sc += 1
 	$Wave_Elements/Wave_R28.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+60])))*sin(2*PI*((wave_index[x_index+60]))/wavelength))
 	$Wave_Elements/Wave_R29.scale.y = ((wave_y*scale_slope)+scale_intercept)
@@ -256,10 +292,12 @@ func play_made_wave2(wave_index,x_index,amplitude,wavelength,decay):
 	$Wave_Elements/Wave_R39.scale.y = ((wave_y*scale_slope)+scale_intercept)
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+5])))*sin(2*PI*((wave_index[x_index+5]))/wavelength))
 	$Wave_Elements/Wave_R40.scale.y = ((wave_y*scale_slope)+scale_intercept)
-	wave_y = (amplitude*exp(decay*((wave_index[x_index+20])))*sin(2*PI*((wave_index[x_index+20]))/wavelength))
-	$Swimmer_1.position = Vector2(1035,((wave_y*pixel_slope)+pixel_intercept))
+	wave_y = (amplitude*exp(decay*((wave_index[x_index+140])))*sin(2*PI*((wave_index[x_index+140]))/wavelength))
+	$Swimmer_1.position = Vector2(542.654,((wave_y*pixel_slope)+pixel_intercept))
 	wave_y = (amplitude*exp(decay*((wave_index[x_index+105])))*sin(2*PI*((wave_index[x_index+105]))/wavelength))
 	$Swimmer_2.position = Vector2(685.496,((wave_y*pixel_slope)+pixel_intercept))
+	wave_y = (amplitude*exp(decay*((wave_index[x_index+70])))*sin(2*PI*((wave_index[x_index+70]))/wavelength))
+	$Swimmer_3.position = Vector2(828.338,((wave_y*pixel_slope)+pixel_intercept))
 
 func test_sine_wave(x,amp):
 	var y_wave: float = 0.0
@@ -308,8 +346,9 @@ func test_sine_wave(x,amp):
 	$Wave_Elements/Wave_R38.scale.y = (((amp*sin(x+x_step*185))*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R39.scale.y = (((amp*sin(x+x_step*190))*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R40.scale.y = (((amp*sin(x+x_step*195))*scale_slope)+scale_intercept)
-	$Swimmer_1.position = Vector2(1035,(((amp*sin(x+x_step*180))*pixel_slope)+pixel_intercept))
+	$Swimmer_1.position = Vector2(542.654,(((amp*sin(x+x_step*45))*pixel_slope)+pixel_intercept))
 	$Swimmer_2.position = Vector2(685.496,(((amp*sin(x+x_step*80))*pixel_slope)+pixel_intercept))
+	$Swimmer_3.position = Vector2(828.338,(((amp*sin(x+x_step*115))*pixel_slope)+pixel_intercept))
 	
 func test_decay_wave(x,amp,wavelength,decay):
 	var y_wave: float = 0.0
@@ -358,7 +397,7 @@ func test_decay_wave(x,amp,wavelength,decay):
 	$Wave_Elements/Wave_R38.scale.y = (((amp*sin(x+x_step*185))*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R39.scale.y = (((amp*sin(x+x_step*190))*scale_slope)+scale_intercept)
 	$Wave_Elements/Wave_R40.scale.y = (((amp*sin(x+x_step*195))*scale_slope)+scale_intercept)
-	$Swimmer_1.position = Vector2(1035,(((amp*sin(x+x_step*180))*pixel_slope)+pixel_intercept))
+	$Swimmer_1.position = Vector2(848.744,(((amp*sin(x+x_step*180))*pixel_slope)+pixel_intercept))
 	
 func requested_wave_display(wave):
 	var baseline_x = $Requested_Wave_Node/Swimmer_Request_1.position.x
@@ -704,22 +743,47 @@ func _on_button_pressed():
 	clear_line_2d()
 	hide_score_bands(false)
 	requested_wave_display_reversed(requested_wave)
-	$Requested_Wave_Node/Requested_Wave_Line.position = Vector2($Swimmer_2.position.x+10.203,314.884)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
-	$Requested_Wave_Node/Requested_Wave_25_upper.position = Vector2($Swimmer_2.position.x+10.203,302.05)
-	$Requested_Wave_Node/Requested_Wave_50_upper.position = Vector2($Swimmer_2.position.x+10.203,289.1)
-	$Requested_Wave_Node/Requested_Wave_100_upper.position = Vector2($Swimmer_2.position.x+10.203,263.2)
-	$Requested_Wave_Node/Requested_Wave_150_upper.position = Vector2($Swimmer_2.position.x+10.203,237.3)
-	$Requested_Wave_Node/Requested_Wave_200_upper.position = Vector2($Swimmer_2.position.x+10.203,211.4)
-	$Requested_Wave_Node/Requested_Wave_25_lower.position = Vector2($Swimmer_2.position.x+10.203,327.95)
-	$Requested_Wave_Node/Requested_Wave_50_lower.position = Vector2($Swimmer_2.position.x+10.203,340.9)
-	$Requested_Wave_Node/Requested_Wave_100_lower.position = Vector2($Swimmer_2.position.x+10.203,366.8)
-	$Requested_Wave_Node/Requested_Wave_150_lower.position = Vector2($Swimmer_2.position.x+10.203,392.7)
-	$Requested_Wave_Node/Requested_Wave_200_lower.position = Vector2($Swimmer_2.position.x+10.203,418.6)
+	sc = 0
+	if active_swimmer == 1:
+		$Requested_Wave_Node/Requested_Wave_Line.position = Vector2($Swimmer_1.position.x+10.203,314.884)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
+		$Requested_Wave_Node/Requested_Wave_25_upper.position = Vector2($Swimmer_1.position.x+10.203,302.05)
+		$Requested_Wave_Node/Requested_Wave_50_upper.position = Vector2($Swimmer_1.position.x+10.203,289.1)
+		$Requested_Wave_Node/Requested_Wave_100_upper.position = Vector2($Swimmer_1.position.x+10.203,263.2)
+		$Requested_Wave_Node/Requested_Wave_150_upper.position = Vector2($Swimmer_1.position.x+10.203,237.3)
+		$Requested_Wave_Node/Requested_Wave_200_upper.position = Vector2($Swimmer_1.position.x+10.203,211.4)
+		$Requested_Wave_Node/Requested_Wave_25_lower.position = Vector2($Swimmer_1.position.x+10.203,327.95)
+		$Requested_Wave_Node/Requested_Wave_50_lower.position = Vector2($Swimmer_1.position.x+10.203,340.9)
+		$Requested_Wave_Node/Requested_Wave_100_lower.position = Vector2($Swimmer_1.position.x+10.203,366.8)
+		$Requested_Wave_Node/Requested_Wave_150_lower.position = Vector2($Swimmer_1.position.x+10.203,392.7)
+		$Requested_Wave_Node/Requested_Wave_200_lower.position = Vector2($Swimmer_1.position.x+10.203,418.6)
+	elif active_swimmer == 2:
+		$Requested_Wave_Node/Requested_Wave_Line.position = Vector2($Swimmer_2.position.x+10.203,314.884)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
+		$Requested_Wave_Node/Requested_Wave_25_upper.position = Vector2($Swimmer_2.position.x+10.203,302.05)
+		$Requested_Wave_Node/Requested_Wave_50_upper.position = Vector2($Swimmer_2.position.x+10.203,289.1)
+		$Requested_Wave_Node/Requested_Wave_100_upper.position = Vector2($Swimmer_2.position.x+10.203,263.2)
+		$Requested_Wave_Node/Requested_Wave_150_upper.position = Vector2($Swimmer_2.position.x+10.203,237.3)
+		$Requested_Wave_Node/Requested_Wave_200_upper.position = Vector2($Swimmer_2.position.x+10.203,211.4)
+		$Requested_Wave_Node/Requested_Wave_25_lower.position = Vector2($Swimmer_2.position.x+10.203,327.95)
+		$Requested_Wave_Node/Requested_Wave_50_lower.position = Vector2($Swimmer_2.position.x+10.203,340.9)
+		$Requested_Wave_Node/Requested_Wave_100_lower.position = Vector2($Swimmer_2.position.x+10.203,366.8)
+		$Requested_Wave_Node/Requested_Wave_150_lower.position = Vector2($Swimmer_2.position.x+10.203,392.7)
+		$Requested_Wave_Node/Requested_Wave_200_lower.position = Vector2($Swimmer_2.position.x+10.203,418.6)
+	elif active_swimmer == 3:
+		$Requested_Wave_Node/Requested_Wave_Line.position = Vector2($Swimmer_3.position.x+10.203,314.884)#Vector2($Swimmer_2.position.x,$Swimmer_2.position.y)
+		$Requested_Wave_Node/Requested_Wave_25_upper.position = Vector2($Swimmer_3.position.x+10.203,302.05)
+		$Requested_Wave_Node/Requested_Wave_50_upper.position = Vector2($Swimmer_3.position.x+10.203,289.1)
+		$Requested_Wave_Node/Requested_Wave_100_upper.position = Vector2($Swimmer_3.position.x+10.203,263.2)
+		$Requested_Wave_Node/Requested_Wave_150_upper.position = Vector2($Swimmer_3.position.x+10.203,237.3)
+		$Requested_Wave_Node/Requested_Wave_200_upper.position = Vector2($Swimmer_3.position.x+10.203,211.4)
+		$Requested_Wave_Node/Requested_Wave_25_lower.position = Vector2($Swimmer_3.position.x+10.203,327.95)
+		$Requested_Wave_Node/Requested_Wave_50_lower.position = Vector2($Swimmer_3.position.x+10.203,340.9)
+		$Requested_Wave_Node/Requested_Wave_100_lower.position = Vector2($Swimmer_3.position.x+10.203,366.8)
+		$Requested_Wave_Node/Requested_Wave_150_lower.position = Vector2($Swimmer_3.position.x+10.203,392.7)
+		$Requested_Wave_Node/Requested_Wave_200_lower.position = Vector2($Swimmer_3.position.x+10.203,418.6)
 	requested_wave_to_score = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
 	player_wave = make_wave(player_amplitude,player_wavelength,decay,x_resolution,time)
 	#print(player_wave)
 	#print(requested_wave_to_score)
-	sc = 0
 	score_array = wave_compare_score(player_wave,requested_wave_to_score,score_array)
 	print("score array")
 	print(score_array)
