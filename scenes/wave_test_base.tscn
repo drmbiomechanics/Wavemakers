@@ -398,25 +398,8 @@ texture = ExtResource("2_72l33")
 centered = false
 flip_v = true
 
-[node name="Swimmer_1" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1033, 315)
-scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
-animation = &"Swimmer_Type_1"
-centered = false
-offset = Vector2(-220, -415)
-
-[node name="Swimmer_2" type="AnimatedSprite2D" parent="."]
-position = Vector2(685.496, 315)
-scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
-animation = &"Swimmer_Type_1"
-centered = false
-offset = Vector2(-220, -415)
-
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 22)
+position = Vector2(0, 7)
 anchor_mode = 0
 zoom = Vector2(1.04, 1.04)
 
@@ -434,6 +417,7 @@ theme = ExtResource("9_to83j")
 [node name="Requested_Wave_Node" type="Node2D" parent="."]
 
 [node name="Swimmer_Request_1" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(359, 314.884)
 scale = Vector2(0.08, 0.08)
@@ -443,6 +427,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_2" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(379.406, 315)
 scale = Vector2(0.08, 0.08)
@@ -452,6 +437,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_3" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(399.812, 315)
 scale = Vector2(0.08, 0.08)
@@ -461,6 +447,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_4" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(420.218, 315)
 scale = Vector2(0.08, 0.08)
@@ -470,6 +457,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_5" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(440.624, 315)
 scale = Vector2(0.08, 0.08)
@@ -479,6 +467,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_6" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(461.03, 315)
 scale = Vector2(0.08, 0.08)
@@ -488,6 +477,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_7" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(481.436, 315)
 scale = Vector2(0.08, 0.08)
@@ -497,6 +487,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_8" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(501.842, 315)
 scale = Vector2(0.08, 0.08)
@@ -506,6 +497,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_9" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(522.248, 315)
 scale = Vector2(0.08, 0.08)
@@ -515,6 +507,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_10" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(542.654, 315)
 scale = Vector2(0.08, 0.08)
@@ -524,6 +517,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_11" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(563.06, 315)
 scale = Vector2(0.08, 0.08)
@@ -533,6 +527,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_12" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(583.466, 315)
 scale = Vector2(0.08, 0.08)
@@ -542,6 +537,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_13" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(603.872, 315)
 scale = Vector2(0.08, 0.08)
@@ -551,6 +547,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_14" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(624.278, 315)
 scale = Vector2(0.08, 0.08)
@@ -560,6 +557,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_15" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(644.684, 315)
 scale = Vector2(0.08, 0.08)
@@ -569,6 +567,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_16" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(665.09, 315)
 scale = Vector2(0.08, 0.08)
@@ -578,6 +577,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_17" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(685.496, 315)
 scale = Vector2(0.08, 0.08)
@@ -587,6 +587,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_18" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(705.902, 315)
 scale = Vector2(0.08, 0.08)
@@ -596,6 +597,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_19" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(726.308, 315)
 scale = Vector2(0.08, 0.08)
@@ -605,6 +607,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_20" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(746.714, 315)
 scale = Vector2(0.08, 0.08)
@@ -614,6 +617,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_21" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(767.12, 315)
 scale = Vector2(0.08, 0.08)
@@ -623,6 +627,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_22" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(787.526, 315)
 scale = Vector2(0.08, 0.08)
@@ -632,6 +637,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_23" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(807.932, 315)
 scale = Vector2(0.08, 0.08)
@@ -641,6 +647,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_24" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(828.338, 315)
 scale = Vector2(0.08, 0.08)
@@ -650,6 +657,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_25" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(848.744, 315)
 scale = Vector2(0.08, 0.08)
@@ -659,6 +667,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_26" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(869.15, 315)
 scale = Vector2(0.08, 0.08)
@@ -668,6 +677,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_27" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(889.556, 315)
 scale = Vector2(0.08, 0.08)
@@ -677,6 +687,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_28" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(909.962, 315)
 scale = Vector2(0.08, 0.08)
@@ -686,6 +697,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_29" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(930.368, 315)
 scale = Vector2(0.08, 0.08)
@@ -695,6 +707,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_30" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(950.774, 315)
 scale = Vector2(0.08, 0.08)
@@ -704,6 +717,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_31" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(971.18, 315)
 scale = Vector2(0.08, 0.08)
@@ -713,6 +727,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_32" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(991.586, 315)
 scale = Vector2(0.08, 0.08)
@@ -722,6 +737,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_33" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1011.99, 315)
 scale = Vector2(0.08, 0.08)
@@ -731,6 +747,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_34" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1032.4, 315)
 scale = Vector2(0.08, 0.08)
@@ -740,6 +757,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_35" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1052.8, 315)
 scale = Vector2(0.08, 0.08)
@@ -749,6 +767,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_36" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1073.21, 315)
 scale = Vector2(0.08, 0.08)
@@ -758,6 +777,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_37" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1093.62, 315)
 scale = Vector2(0.08, 0.08)
@@ -767,6 +787,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_38" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1114.02, 315)
 scale = Vector2(0.08, 0.08)
@@ -776,6 +797,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_39" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1134.43, 315)
 scale = Vector2(0.08, 0.08)
@@ -785,6 +807,7 @@ centered = false
 offset = Vector2(-220, -415)
 
 [node name="Swimmer_Request_40" type="AnimatedSprite2D" parent="Requested_Wave_Node"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1154.83, 315)
 scale = Vector2(0.08, 0.08)
@@ -795,6 +818,74 @@ offset = Vector2(-220, -415)
 
 [node name="Requested_Wave_Line" type="Line2D" parent="Requested_Wave_Node"]
 position = Vector2(359, 314.884)
-default_color = Color(1, 0.0705882, 1, 1)
+width = 5.0
+default_color = Color(0, 1, 0, 1)
+
+[node name="Requested_Wave_25_upper" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 302.05)
+width = 2.0
+default_color = Color(1, 1, 0, 1)
+
+[node name="Requested_Wave_25_lower" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 327.95)
+width = 2.0
+default_color = Color(1, 1, 0, 1)
+
+[node name="Requested_Wave_50_upper" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 289.1)
+width = 2.0
+default_color = Color(1, 0.486275, 0, 1)
+
+[node name="Requested_Wave_50_lower" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 340.9)
+width = 2.0
+default_color = Color(1, 0.486275, 0, 1)
+
+[node name="Requested_Wave_100_upper" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 263.2)
+width = 2.0
+default_color = Color(1, 0.486275, 0.839216, 1)
+
+[node name="Requested_Wave_100_lower" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 366.8)
+width = 2.0
+default_color = Color(1, 0.486275, 0.839216, 1)
+
+[node name="Requested_Wave_150_upper" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 237.3)
+width = 2.0
+default_color = Color(1, 0, 0.839216, 1)
+
+[node name="Requested_Wave_150_lower" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 392.7)
+width = 2.0
+default_color = Color(1, 0, 0.839216, 1)
+
+[node name="Requested_Wave_200_upper" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 211.4)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Requested_Wave_200_lower" type="Line2D" parent="Requested_Wave_Node"]
+position = Vector2(359, 418.6)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Swimmer_1" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1033, 315)
+scale = Vector2(0.08, 0.08)
+sprite_frames = ExtResource("4_0rl7a")
+animation = &"Swimmer_Type_1"
+centered = false
+offset = Vector2(-220, -415)
+
+[node name="Swimmer_2" type="AnimatedSprite2D" parent="."]
+position = Vector2(685.496, 315)
+scale = Vector2(0.08, 0.08)
+sprite_frames = ExtResource("4_0rl7a")
+animation = &"Swimmer_Type_1"
+centered = false
+offset = Vector2(-220, -415)
 
 [connection signal="pressed" from="PanelContainer/Button" to="." method="_on_button_pressed"]
