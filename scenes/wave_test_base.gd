@@ -37,7 +37,7 @@ func _ready():
 	#print(requested_wave)
 	requested_wave.reverse()
 	requested_wave_display(requested_wave)
-	hide_score_bands(true)
+	#hide_score_bands(true)
 	#requested_wave_display_reversed(requested_wave)
 	#player_wave = make_wave(5,0.8,-0.3,0.01,2.5) #trying to output player wave to see if it matches???
 	#print(player_wave)
@@ -72,10 +72,10 @@ func _process(delta):
 			counter += 1
 			#print(counter)
 			if active_swimmer == 1:
-				if $Requested_Wave_Node/Requested_Wave_Line.position.x < -160:
+				if $Requested_Wave_Node/Requested_Wave_Line.position.x < -255:
 					clear_line_2d()
 			elif active_swimmer == 2:
-				if $Requested_Wave_Node/Requested_Wave_Line.position.x < 0:
+				if $Requested_Wave_Node/Requested_Wave_Line.position.x < -110:
 					clear_line_2d()
 			elif active_swimmer == 3:
 				if $Requested_Wave_Node/Requested_Wave_Line.position.x < 120:
@@ -86,7 +86,7 @@ func _process(delta):
 			$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(359,314.884)
 			requested_wave_display(requested_wave)
 			active_swimmer = 2
-			hide_score_bands(true)
+			#hide_score_bands(true)
 			#$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(359,314.884)
 
 func update_score():
@@ -577,15 +577,15 @@ func requested_wave_display_reversed(wave):
 	$Requested_Wave_Node/Swimmer_Request_35.position.y = ((wave[25]*pixel_slope)+pixel_intercept)
 	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_35.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_35.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_36.position.y = ((wave[20]*pixel_slope)+pixel_intercept)
-	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_36.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_36.position.y-baseline_y))
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_36.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_36.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_37.position.y = ((wave[15]*pixel_slope)+pixel_intercept)
-	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_37.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_37.position.y-baseline_y))
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_37.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_37.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_38.position.y = ((wave[10]*pixel_slope)+pixel_intercept)
-	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_38.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_38.position.y-baseline_y))
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_38.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_38.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_39.position.y = ((wave[5]*pixel_slope)+pixel_intercept)
-	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_39.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_39.position.y-baseline_y))
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_39.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_39.position.y-baseline_y))
 	$Requested_Wave_Node/Swimmer_Request_40.position.y = ((wave[0]*pixel_slope)+pixel_intercept)
-	#set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_40.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_40.position.y-baseline_y))
+	set_line2d(Vector2($Requested_Wave_Node/Swimmer_Request_40.position.x-baseline_x,$Requested_Wave_Node/Swimmer_Request_40.position.y-baseline_y))
 
 
 func wave_check(wave): # use this to display the requested wave? Or something similar
@@ -759,7 +759,7 @@ func _on_button_pressed():
 	var wave_anim = []
 	$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(359,314.884)
 	clear_line_2d()
-	hide_score_bands(false)
+	#hide_score_bands(false)
 	requested_wave_display_reversed(requested_wave)
 	sc = 0
 	score = 0
@@ -864,3 +864,12 @@ func _on_decay_spin_box_value_changed(value):
 func _on_active_swimmer_spin_box_value_changed(value):
 	active_swimmer = get_node("Active_Swimmer_SB_Container/Active_Swimmer_SpinBox").get_value()
 	print("Decay Changed to: " + str(active_swimmer))
+
+
+func _on_score_band_toggle_toggled(button_pressed):
+	if button_pressed == true:
+		hide_score_bands(false)
+		$Score_Band_Toggle_Container/Score_Band_Toggle.text = "Score Bands: On"
+	else:
+		hide_score_bands(true)
+		$Score_Band_Toggle_Container/Score_Band_Toggle.text = "Score Bands: Off"
