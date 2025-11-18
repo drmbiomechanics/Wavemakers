@@ -2,10 +2,10 @@ extends Node2D
 var x_for_waves = 0
 var x_step = 0.025
 var wave_made = false
-var scale_slope = 0.072
-var scale_intercept = 0.411
-var pixel_slope = -51.8
-var pixel_intercept = 315
+var scale_slope = 0.144#0.072
+var scale_intercept = 0.1
+var pixel_slope = -103.6#-51.8
+var pixel_intercept = 538#315
 var score = 0
 var score_array = []
 var player_wave = [0]

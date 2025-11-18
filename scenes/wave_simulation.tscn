@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://6xhl7mv2nmqn"]
+[gd_scene load_steps=11 format=3 uid="uid://cy1hnenebh06"]
 
-[ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="1_2xlsd"]
-[ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_8whn5"]
-[ext_resource type="Texture2D" uid="uid://cssoasqyx24ox" path="res://sprites/background/WAVES colour.png" id="2_72l33"]
-[ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="2_h4fmw"]
-[ext_resource type="SpriteFrames" uid="uid://c3pw0hnoa05jv" path="res://sprites/spriteframes/swimmers_spriteframe.tres" id="4_0rl7a"]
-[ext_resource type="Texture2D" uid="uid://c4bpaln7e7gt4" path="res://sprites/background/wavemakers_logo.png" id="4_cpxhf"]
-[ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="5_b6atr"]
-[ext_resource type="Theme" uid="uid://csc7fi523g83d" path="res://resources/Button_Theme.tres" id="9_to83j"]
+[ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_4aho2"]
+[ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="2_yutgv"]
+[ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="3_iqiwu"]
+[ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="4_fetgb"]
+[ext_resource type="Texture2D" uid="uid://c4bpaln7e7gt4" path="res://sprites/background/wavemakers_logo.png" id="5_qolnd"]
+[ext_resource type="Texture2D" uid="uid://cssoasqyx24ox" path="res://sprites/background/WAVES colour.png" id="6_eiuex"]
+[ext_resource type="Theme" uid="uid://csc7fi523g83d" path="res://resources/Button_Theme.tres" id="7_ucrnu"]
+[ext_resource type="SpriteFrames" uid="uid://c3pw0hnoa05jv" path="res://sprites/spriteframes/swimmers_spriteframe.tres" id="8_7l636"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1yv8"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,11 +16,11 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Wave_Test_Base" type="Node2D"]
-script = ExtResource("1_8whn5")
+script = ExtResource("1_4aho2")
 
 [node name="Reference_Images" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.9, 0.898611)
-sprite_frames = ExtResource("1_2xlsd")
+sprite_frames = ExtResource("2_yutgv")
 animation = &"references"
 frame = 2
 centered = false
@@ -28,18 +28,18 @@ centered = false
 [node name="Sky_Sprite" type="Sprite2D" parent="."]
 position = Vector2(711, 277)
 scale = Vector2(0.694531, 0.775)
-texture = ExtResource("2_h4fmw")
+texture = ExtResource("3_iqiwu")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 18)
-tile_set = ExtResource("5_b6atr")
+tile_set = ExtResource("4_fetgb")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 262144, 0, 0, 524288, 0, 0, 786432, 0, 0, 1048576, 0, 0, 65536, 65536, 0, 393216, 65536, 0, 720896, 65536, 0, 851968, 65536, 0, 131072, 131072, 0, 327680, 131072, 0, 589824, 131072, 0, 983040, 131072, 0, 196608, 196608, 0, 458752, 196608, 0, 655360, 196608, 0, 917504, 196608, 0, 1048577, 65536, 0, 1048580, 65536, 0, 1048582, 65536, 0, 1048584, 65536, 0, 1048585, 65536, 0, 1048589, 65536, 0, 1048592, 65536, 0, 1048594, 65536, 0, 1048598, 65536, 0, 1048605, 65536, 0, 1048607, 65536, 0, 1048578, 131072, 0, 1048581, 131072, 0, 1048587, 131072, 0, 1048591, 131072, 0, 1048593, 131072, 0, 1048596, 131072, 0, 1048601, 131072, 0, 1048602, 131072, 0, 1048606, 131072, 0, 1048579, 196608, 0, 1048583, 196608, 0, 1048586, 196608, 0, 1048588, 196608, 0, 1048590, 196608, 0, 1048595, 196608, 0, 1048597, 196608, 0, 1048599, 196608, 0, 1048600, 196608, 0, 1048603, 196608, 0, 1048604, 196608, 0, 524295, 196608, 0, 983070, 0, 0, 983071, 0, 0, 917534, 65536, 0, 917535, 65536, 0, 851998, 131072, 0, 851999, 131072, 0, 786462, 196608, 0, 786463, 196608, 0, 720926, 65536, 0, 720927, 65536, 0, 655390, 0, 0, 655391, 0, 0, 589854, 131072, 0, 589855, 131072, 0, 524318, 196608, 0, 524319, 196608, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524291, 0, 0, 524290, 0, 0, 524289, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0)
 
 [node name="Pool_Background" type="Sprite2D" parent="."]
 position = Vector2(295, 315)
 scale = Vector2(0.636719, 0.409722)
-texture = ExtResource("4_cpxhf")
+texture = ExtResource("5_qolnd")
 centered = false
 
 [node name="Wave_Elements" type="Node2D" parent="."]
@@ -49,7 +49,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(314.844, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -58,7 +58,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(335.25, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -67,7 +67,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(355.7, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -76,7 +76,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(376.15, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -85,7 +85,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(396.6, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -94,7 +94,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(417.05, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -103,7 +103,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(437.5, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -112,7 +112,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(457.95, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -121,7 +121,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(478.4, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -130,7 +130,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(498.85, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -139,7 +139,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(519.3, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -148,7 +148,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(539.75, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -157,7 +157,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(560.2, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -166,7 +166,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(580.65, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -175,7 +175,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(601.1, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -184,7 +184,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(621.55, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -193,7 +193,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(642, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -202,7 +202,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(662.45, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -211,7 +211,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(682.9, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -220,7 +220,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(703.35, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -229,7 +229,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(723.8, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -238,7 +238,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(744.25, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -247,7 +247,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(764.7, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -256,7 +256,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(785.15, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -265,7 +265,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(805.6, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -274,7 +274,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(826.05, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -283,7 +283,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(846.5, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -292,7 +292,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(866.95, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -301,7 +301,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(887.4, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -310,7 +310,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(907.85, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -319,7 +319,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(928.3, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -328,7 +328,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(948.75, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -337,7 +337,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(969.2, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -346,7 +346,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(989.65, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -355,7 +355,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1010.1, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -364,7 +364,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1030.55, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -373,7 +373,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1051, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -382,7 +382,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1071.45, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -391,7 +391,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1091.9, 610.5)
 rotation = -3.14159
 scale = Vector2(0.016, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -400,7 +400,7 @@ self_modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(1109.85, 610.5)
 rotation = -3.14159
 scale = Vector2(0.0140447, 0.411)
-texture = ExtResource("2_72l33")
+texture = ExtResource("6_eiuex")
 centered = false
 flip_v = true
 
@@ -421,11 +421,11 @@ offset_left = 237.0
 offset_top = 270.0
 offset_right = 295.0
 offset_bottom = 314.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 
 [node name="Go_Button" type="Button" parent="Button_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "GO"
 
 [node name="Stop_Button_Container" type="PanelContainer" parent="."]
@@ -433,11 +433,11 @@ offset_left = 37.0
 offset_top = 270.0
 offset_right = 153.0
 offset_bottom = 314.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 
 [node name="Stop_Button" type="Button" parent="Stop_Button_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "STOP"
 
 [node name="P_Amp_SB_Container" type="PanelContainer" parent="."]
@@ -445,7 +445,7 @@ offset_left = 212.0
 offset_top = 18.0
 offset_right = 295.063
 offset_bottom = 58.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="P_Amp_SpinBox" type="SpinBox" parent="P_Amp_SB_Container"]
@@ -461,7 +461,7 @@ offset_left = 212.0
 offset_top = 58.0
 offset_right = 295.063
 offset_bottom = 98.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="P_Wavelength_SpinBox" type="SpinBox" parent="P_Wavelength_SB_Container"]
@@ -477,7 +477,7 @@ offset_left = 212.0
 offset_top = 97.0
 offset_right = 295.063
 offset_bottom = 137.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="R_Amp_SpinBox" type="SpinBox" parent="R_Amp_SB_Container"]
@@ -493,7 +493,7 @@ offset_left = 212.0
 offset_top = 137.0
 offset_right = 295.063
 offset_bottom = 177.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="R_Wavelength_SpinBox" type="SpinBox" parent="R_Wavelength_SB_Container"]
@@ -509,7 +509,7 @@ offset_left = 212.0
 offset_top = 177.0
 offset_right = 295.063
 offset_bottom = 217.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="Decay_SpinBox" type="SpinBox" parent="Decay_SB_Container"]
@@ -525,7 +525,7 @@ offset_left = 212.0
 offset_top = 217.0
 offset_right = 295.063
 offset_bottom = 257.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="Active_Swimmer_SpinBox" type="SpinBox" parent="Active_Swimmer_SB_Container"]
@@ -540,12 +540,12 @@ offset_left = 36.0
 offset_top = 18.0
 offset_right = 221.0
 offset_bottom = 58.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="P_Amplitude_Label" type="Label" parent="P_Amp_Label_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "Player Amplitude:"
 
 [node name="P_Wavelength_Label_Container" type="PanelContainer" parent="."]
@@ -553,12 +553,12 @@ offset_left = 36.0
 offset_top = 58.0
 offset_right = 221.0
 offset_bottom = 98.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="P_Wavelength_Label" type="Label" parent="P_Wavelength_Label_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "Player Wavelength:"
 
 [node name="R_Amp_Label_Container" type="PanelContainer" parent="."]
@@ -566,12 +566,12 @@ offset_left = 36.0
 offset_top = 97.0
 offset_right = 221.0
 offset_bottom = 137.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="R_Amplitude_Label" type="Label" parent="R_Amp_Label_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "Requested Amplitude:"
 
 [node name="R_Wavelength_Label_Container" type="PanelContainer" parent="."]
@@ -579,12 +579,12 @@ offset_left = 36.0
 offset_top = 137.0
 offset_right = 212.0
 offset_bottom = 177.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="R_Wavelength_Label" type="Label" parent="R_Wavelength_Label_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "Requested Wavelength:"
 
 [node name="Decay_Label_Container" type="PanelContainer" parent="."]
@@ -592,12 +592,12 @@ offset_left = 36.0
 offset_top = 177.0
 offset_right = 221.0
 offset_bottom = 217.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="Decay_Label" type="Label" parent="Decay_Label_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "Decay (experimental)"
 
 [node name="Active_Swimmer_Label_Container" type="PanelContainer" parent="."]
@@ -605,12 +605,12 @@ offset_left = 36.0
 offset_top = 217.0
 offset_right = 221.0
 offset_bottom = 257.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ju0f")
 
 [node name="Active_Swimmer_Label" type="Label" parent="Active_Swimmer_Label_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 text = "Active Swimmer"
 
 [node name="Requested_Wave_Node" type="Node2D" parent="."]
@@ -620,7 +620,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(359, 314.884)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -630,7 +630,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(379.406, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -640,7 +640,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(399.812, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -650,7 +650,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(420.218, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -660,7 +660,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(440.624, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -670,7 +670,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(461.03, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -680,7 +680,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(481.436, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -690,7 +690,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(501.842, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -700,7 +700,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(522.248, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -710,7 +710,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(542.654, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -720,7 +720,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(563.06, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -730,7 +730,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(583.466, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -740,7 +740,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(603.872, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -750,7 +750,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(624.278, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -760,7 +760,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(644.684, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -770,7 +770,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(665.09, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -780,7 +780,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(685.496, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -790,7 +790,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(705.902, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -800,7 +800,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(726.308, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -810,7 +810,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(746.714, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -820,7 +820,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(767.12, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -830,7 +830,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(787.526, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -840,7 +840,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(807.932, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -850,7 +850,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(828.338, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -860,7 +860,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(848.744, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -870,7 +870,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(869.15, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -880,7 +880,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(889.556, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -890,7 +890,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(909.962, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -900,7 +900,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(930.368, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -910,7 +910,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(950.774, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -920,7 +920,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(971.18, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -930,7 +930,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(991.586, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -940,7 +940,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1011.99, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -950,7 +950,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1032.4, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -960,7 +960,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1052.8, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -970,7 +970,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1073.21, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -980,7 +980,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1093.62, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -990,7 +990,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1114.02, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -1000,7 +1000,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1134.43, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -1010,7 +1010,7 @@ visible = false
 self_modulate = Color(1, 1, 1, 0.588235)
 position = Vector2(1154.83, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -1073,7 +1073,7 @@ default_color = Color(1, 0, 0, 1)
 [node name="Swimmer_1" type="AnimatedSprite2D" parent="."]
 position = Vector2(542.654, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -1081,7 +1081,7 @@ offset = Vector2(-220, -415)
 [node name="Swimmer_2" type="AnimatedSprite2D" parent="."]
 position = Vector2(685.496, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -1089,7 +1089,7 @@ offset = Vector2(-220, -415)
 [node name="Swimmer_3" type="AnimatedSprite2D" parent="."]
 position = Vector2(828.338, 315)
 scale = Vector2(0.08, 0.08)
-sprite_frames = ExtResource("4_0rl7a")
+sprite_frames = ExtResource("8_7l636")
 animation = &"Swimmer_Type_1"
 centered = false
 offset = Vector2(-220, -415)
@@ -1099,11 +1099,11 @@ offset_left = 959.0
 offset_top = 7.0
 offset_right = 1107.0
 offset_bottom = 47.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 
 [node name="Score_Label" type="Label" parent="Score_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
 text = "Score: 0"
@@ -1114,11 +1114,11 @@ offset_left = 764.0
 offset_top = 10.0
 offset_right = 957.0
 offset_bottom = 43.0
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 
 [node name="Score_Band_Toggle" type="Button" parent="Score_Band_Toggle_Container"]
 layout_mode = 2
-theme = ExtResource("9_to83j")
+theme = ExtResource("7_ucrnu")
 theme_override_font_sizes/font_size = 21
 toggle_mode = true
 button_pressed = true
