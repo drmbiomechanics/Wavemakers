@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cy1hnenebh06"]
 
-[ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_4aho2"]
+[ext_resource type="Script" path="res://scenes/wave_test_simulation.gd" id="1_02yi8"]
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="2_yutgv"]
 [ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="3_iqiwu"]
 [ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="4_fetgb"]
@@ -16,7 +16,7 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [node name="Wave_Test_Base" type="Node2D"]
-script = ExtResource("1_4aho2")
+script = ExtResource("1_02yi8")
 
 [node name="Reference_Images" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.9, 0.898611)

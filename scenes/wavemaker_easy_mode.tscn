@@ -11,11 +11,11 @@
 [ext_resource type="Script" path="res://scenes/wavemaker_movement.gd" id="9_qhwdr"]
 [ext_resource type="Texture2D" uid="uid://dqcdb04gpqre6" path="res://sprites/characters/cross_test_alpha.png" id="10_h3xq1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1yv8"]
-bg_color = Color(0.611765, 0.611765, 0.611765, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ju0f"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1yv8"]
+bg_color = Color(0.611765, 0.611765, 0.611765, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6x6k8"]
 animations = [{
@@ -50,12 +50,6 @@ centered = false
 position = Vector2(711, 277)
 scale = Vector2(0.694531, 0.775)
 texture = ExtResource("3_tccj0")
-
-[node name="TileMap" type="TileMap" parent="."]
-position = Vector2(-1, 18)
-tile_set = ExtResource("4_bpt7l")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 0, 0, 262144, 0, 0, 524288, 0, 0, 786432, 0, 0, 1048576, 0, 0, 65536, 65536, 0, 393216, 65536, 0, 720896, 65536, 0, 851968, 65536, 0, 131072, 131072, 0, 327680, 131072, 0, 589824, 131072, 0, 983040, 131072, 0, 196608, 196608, 0, 458752, 196608, 0, 655360, 196608, 0, 917504, 196608, 0, 1048577, 65536, 0, 1048580, 65536, 0, 1048582, 65536, 0, 1048584, 65536, 0, 1048585, 65536, 0, 1048589, 65536, 0, 1048592, 65536, 0, 1048594, 65536, 0, 1048598, 65536, 0, 1048605, 65536, 0, 1048607, 65536, 0, 1048578, 131072, 0, 1048581, 131072, 0, 1048587, 131072, 0, 1048591, 131072, 0, 1048593, 131072, 0, 1048596, 131072, 0, 1048601, 131072, 0, 1048602, 131072, 0, 1048606, 131072, 0, 1048579, 196608, 0, 1048583, 196608, 0, 1048586, 196608, 0, 1048588, 196608, 0, 1048590, 196608, 0, 1048595, 196608, 0, 1048597, 196608, 0, 1048599, 196608, 0, 1048600, 196608, 0, 1048603, 196608, 0, 1048604, 196608, 0, 524295, 196608, 0, 983070, 0, 0, 983071, 0, 0, 917534, 65536, 0, 917535, 65536, 0, 851998, 131072, 0, 851999, 131072, 0, 786462, 196608, 0, 786463, 196608, 0, 720926, 65536, 0, 720927, 65536, 0, 655390, 0, 0, 655391, 0, 0, 589854, 131072, 0, 589855, 131072, 0, 524318, 196608, 0, 524319, 196608, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524291, 0, 0, 524290, 0, 0, 524289, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0)
 
 [node name="Pool_Background" type="Sprite2D" parent="."]
 position = Vector2(295, 315)
@@ -429,13 +423,6 @@ flip_v = true
 position = Vector2(0, 7)
 anchor_mode = 0
 zoom = Vector2(1.04, 1.04)
-
-[node name="Background_Panel_Container" type="PanelContainer" parent="."]
-offset_left = 37.0
-offset_top = 19.0
-offset_right = 259.0
-offset_bottom = 314.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_j1yv8")
 
 [node name="Button_Container" type="PanelContainer" parent="."]
 offset_left = 214.0
@@ -1104,6 +1091,19 @@ position = Vector2(359, 418.6)
 width = 2.0
 default_color = Color(1, 0, 0, 1)
 
+[node name="Background_Panel_Container" type="PanelContainer" parent="."]
+offset_left = 37.0
+offset_top = 19.0
+offset_right = 259.0
+offset_bottom = 314.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j1yv8")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-1, 18)
+tile_set = ExtResource("4_bpt7l")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 262144, 0, 0, 524288, 0, 0, 786432, 0, 0, 1048576, 0, 0, 65536, 65536, 0, 393216, 65536, 0, 720896, 65536, 0, 851968, 65536, 0, 131072, 131072, 0, 327680, 131072, 0, 589824, 131072, 0, 983040, 131072, 0, 196608, 196608, 0, 458752, 196608, 0, 655360, 196608, 0, 917504, 196608, 0, 1048577, 65536, 0, 1048580, 65536, 0, 1048582, 65536, 0, 1048584, 65536, 0, 1048585, 65536, 0, 1048589, 65536, 0, 1048592, 65536, 0, 1048594, 65536, 0, 1048598, 65536, 0, 1048605, 65536, 0, 1048607, 65536, 0, 1048578, 131072, 0, 1048581, 131072, 0, 1048587, 131072, 0, 1048591, 131072, 0, 1048593, 131072, 0, 1048596, 131072, 0, 1048601, 131072, 0, 1048602, 131072, 0, 1048606, 131072, 0, 1048579, 196608, 0, 1048583, 196608, 0, 1048586, 196608, 0, 1048588, 196608, 0, 1048590, 196608, 0, 1048595, 196608, 0, 1048597, 196608, 0, 1048599, 196608, 0, 1048600, 196608, 0, 1048603, 196608, 0, 1048604, 196608, 0, 524295, 196608, 0, 983070, 0, 0, 983071, 0, 0, 917534, 65536, 0, 917535, 65536, 0, 851998, 131072, 0, 851999, 131072, 0, 786462, 196608, 0, 786463, 196608, 0, 720926, 65536, 0, 720927, 65536, 0, 655390, 0, 0, 655391, 0, 0, 589854, 131072, 0, 589855, 131072, 0, 524318, 196608, 0, 524319, 196608, 0, 524294, 0, 0, 524293, 0, 0, 524292, 0, 0, 524291, 0, 0, 524290, 0, 0, 524289, 0, 0, 7, 0, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0, 327687, 0, 0, 393223, 0, 0, 458759, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0)
+
 [node name="Swimmer_1" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(542.654, 315)
@@ -1143,6 +1143,36 @@ theme = ExtResource("7_xeku8")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
 text = "Score: 0"
+vertical_alignment = 1
+
+[node name="WL_Container" type="PanelContainer" parent="."]
+offset_left = 37.0
+offset_top = 431.0
+offset_right = 193.0
+offset_bottom = 471.0
+theme = ExtResource("7_xeku8")
+
+[node name="WL_Label" type="Label" parent="WL_Container"]
+layout_mode = 2
+theme = ExtResource("7_xeku8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Wavelength: 0"
+vertical_alignment = 1
+
+[node name="Amp_Container" type="PanelContainer" parent="."]
+offset_left = 37.0
+offset_top = 459.0
+offset_right = 185.0
+offset_bottom = 499.0
+theme = ExtResource("7_xeku8")
+
+[node name="Amp_Label" type="Label" parent="Amp_Container"]
+layout_mode = 2
+theme = ExtResource("7_xeku8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Amplitude: 0"
 vertical_alignment = 1
 
 [node name="Score_Band_Toggle_Container" type="PanelContainer" parent="."]
@@ -1198,3 +1228,4 @@ shape = SubResource("SegmentShape2D_27pct")
 [connection signal="value_changed" from="Decay_SB_Container/Decay_SpinBox" to="." method="_on_decay_spin_box_value_changed"]
 [connection signal="value_changed" from="Active_Swimmer_SB_Container/Active_Swimmer_SpinBox" to="." method="_on_active_swimmer_spin_box_value_changed"]
 [connection signal="toggled" from="Score_Band_Toggle_Container/Score_Band_Toggle" to="." method="_on_score_band_toggle_toggled"]
+[connection signal="wave_is_triggered" from="CharacterBody2D" to="." method="_on_character_body_2d_wave_is_triggered"]
