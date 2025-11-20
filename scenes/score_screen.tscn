@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://rxxsk4xsqlsw"]
 
 [ext_resource type="Script" path="res://scripts/score_screen.gd" id="1_sl4v4"]
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="2_r18pp"]

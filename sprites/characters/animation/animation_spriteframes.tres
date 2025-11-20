@@ -1,0 +1,80 @@
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://bp7gh7eexs45j"]
+
+[ext_resource type="Texture2D" uid="uid://csxuj77vbob2n" path="res://sprites/characters/animation/cannonball_1_alpha.PNG" id="1_487sr"]
+[ext_resource type="Texture2D" uid="uid://cejtqdggjsje1" path="res://sprites/characters/animation/Swimmer_Anim_1_alpha.PNG" id="1_ir61h"]
+[ext_resource type="Texture2D" uid="uid://dmah7mckd1qeg" path="res://sprites/characters/animation/Swimmer_Anim_2_alpha.PNG" id="2_hyf0x"]
+[ext_resource type="Texture2D" uid="uid://wgagaixugpx3" path="res://sprites/characters/animation/cannonball_2_alpha.PNG" id="2_ilthq"]
+[ext_resource type="Texture2D" uid="uid://4u1xbce2q4ia" path="res://sprites/characters/animation/cannonball_3_alpha.PNG" id="3_57if8"]
+[ext_resource type="Texture2D" uid="uid://bexfd2h00qlk3" path="res://sprites/characters/animation/Swimmer_Anim_3_alpha.PNG" id="3_i3d0a"]
+[ext_resource type="Texture2D" uid="uid://bfn8pvwwxnf3g" path="res://sprites/characters/animation/cannonball_4_alpha.PNG" id="4_5pm14"]
+[ext_resource type="Texture2D" uid="uid://bc1hyfy6bt6nw" path="res://sprites/characters/animation/Swimmer_Anim_4_alpha.PNG" id="4_crtce"]
+[ext_resource type="Texture2D" uid="uid://coiw8ssv4ardj" path="res://sprites/characters/animation/Swimmer_Anim_5_alpha.PNG" id="5_x84l3"]
+[ext_resource type="Texture2D" uid="uid://biv7t32d7v24v" path="res://sprites/characters/animation/Swimmer_Anim_6_alpha.PNG" id="6_6tkd3"]
+[ext_resource type="Texture2D" uid="uid://nvun0rdv2kvu" path="res://sprites/characters/animation/jump_alpha.png" id="6_odchq"]
+[ext_resource type="Texture2D" uid="uid://edxiuki464yu" path="res://sprites/characters/animation/Swimmer_Anim_7_alpha.PNG" id="7_e3an4"]
+[ext_resource type="Texture2D" uid="uid://dbb01ey2moax" path="res://sprites/characters/animation/Swimmer_Anim_8_alpha.PNG" id="8_qvnlb"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_487sr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ilthq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_57if8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5pm14")
+}],
+"loop": true,
+"name": &"cannonball",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ir61h")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_odchq")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ir61h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hyf0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i3d0a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_crtce")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x84l3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6tkd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e3an4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qvnlb")
+}],
+"loop": true,
+"name": &"move",
+"speed": 8.0
+}]

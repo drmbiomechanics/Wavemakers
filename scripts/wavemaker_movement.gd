@@ -15,6 +15,7 @@ var ground_pound = false
 var wave_triggered = false
 var ready_to_process = true
 signal wave_is_triggered(condition: bool)
+var looking_left = true
 
 func _physics_process(delta):
 	if ready_to_process == false:
@@ -37,6 +38,7 @@ func _physics_process(delta):
 			if not is_on_floor():
 				velocity.y += gravity * delta
 				if Input.is_action_just_pressed("ui_accept"):
+					$AnimatedSprite2D.play("cannonball")
 					ground_pound = true
 					velocity.y = 0
 					velocity.y += (gravity*50) * delta
@@ -54,6 +56,7 @@ func _physics_process(delta):
 				#emit_signal("wave_is_triggered",true)
 				#await get_tree().create_timer(2).timeout
 				ground_pound = false
+				$AnimatedSprite2D.play("idle")
 			else:
 				wave_triggered = false
 			#wave_triggered = false
@@ -63,6 +66,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		if ready_to_process == true:
 			velocity.y = JUMP_VELOCITY
+			$AnimatedSprite2D.play("jump")
 		elif ready_to_process == false:
 			print("no jumping")
 		#print(velocity.y)
@@ -70,6 +74,26 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
+	if looking_left == true and Input.is_action_just_pressed("ui_left"):
+		pass
+	elif looking_left == false and Input.is_action_just_pressed("ui_left"):
+		$AnimatedSprite2D.flip_h = false
+		looking_left = true
+	elif looking_left == true and Input.is_action_just_pressed("ui_right"):
+		$AnimatedSprite2D.flip_h = true
+		looking_left = false
+	if Input.is_anything_pressed() == false and is_on_floor():
+		$AnimatedSprite2D.play("idle")
+	elif Input.is_anything_pressed() == false and not is_on_floor() and ground_pound == false:
+		$AnimatedSprite2D.play("jump")
+	elif Input.is_anything_pressed() == false and not is_on_floor() and ground_pound == true:
+		$AnimatedSprite2D.play("cannonball")
+	elif looking_left == true and Input.is_action_just_pressed("ui_left") and is_on_floor():
+		$AnimatedSprite2D.play("move")
+	elif looking_left == false and Input.is_action_just_pressed("ui_right") and is_on_floor():
+		$AnimatedSprite2D.flip_h = true
+		$AnimatedSprite2D.play("move")
+		
 	if ground_pound == false:
 		if direction:
 			velocity.x = direction * SPEED

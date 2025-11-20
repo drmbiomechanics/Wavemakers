@@ -26,10 +26,10 @@ var player_wavelength = 0.8
 var requested_wave_to_score = []
 var sc = 0
 var active_swimmer = 2# change this later
-var score_text = "Score = "
-var round_text = "Round = "
-var amplitude_text = "Amplitude = "
-var wavelength_text = "Wavelength = "
+var score_text = "Score="
+var round_text = "Round="
+var amplitude_text = "Amplitude="
+var wavelength_text = "Wavelength="
 var max_jump_height = 30.80 # value might change if sprite size changes
 var min_jump_height = 200 # value might change if sprite size changes
 var floor_height = 305
@@ -153,6 +153,7 @@ func _process(delta):
 				requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
 				update_round()
 				$Swimmer_2.frame = swimmer_sprite
+				$Wavemachine.play("off")
 			disable_buttons(false)
 			$Requested_Wave_Node/Wave_Projection_Line.show()
 			$Requested_Wave_Node/Requested_Wave_Line.position = Vector2(295,314.884)
@@ -1303,6 +1304,7 @@ func _on_character_body_2d_wave_is_triggered(condition):
 #		y = (5*exp(-0.3*(x*0.05))*sin(2*PI*(x*0.05)/1))
 #		wave.append(y)
 	#wave_check(wave)
+	$Wavemachine.play("on")
 	wave_anim = player_wave_anim_prep(wave,40,1)
 	#print(wave_anim)
 	wave_made = true
