@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://5g6fb80we76k"]
+[gd_scene load_steps=11 format=3]
 
-[ext_resource type="Script" path="res://scenes/Title_Screen_script.gd" id="1_x86jv"]
+[ext_resource type="Script" path="res://scripts/Title_Screen_script.gd" id="1_x86jv"]
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="2_vpgtn"]
 [ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="3_63rn3"]
 [ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="4_0qo58"]

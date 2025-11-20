@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://btk50jnevijrc"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="Script" path="res://scenes/score_screen.gd" id="1_sl4v4"]
+[ext_resource type="Script" path="res://scripts/score_screen.gd" id="1_sl4v4"]
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="2_r18pp"]
 [ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="3_fi2ij"]
 [ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="4_cxv7j"]

@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://6xhl7mv2nmqn"]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="1_2xlsd"]
-[ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_8whn5"]
+[ext_resource type="Script" path="res://scripts/wave_test_base.gd" id="1_8whn5"]
 [ext_resource type="Texture2D" uid="uid://cssoasqyx24ox" path="res://sprites/background/WAVES colour.png" id="2_72l33"]
 [ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="2_h4fmw"]
 [ext_resource type="SpriteFrames" uid="uid://c3pw0hnoa05jv" path="res://sprites/spriteframes/swimmers_spriteframe.tres" id="4_0rl7a"]

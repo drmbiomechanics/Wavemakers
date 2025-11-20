@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bdf1ktr3shaqe"]
+[gd_scene load_steps=20 format=3 uid="uid://vmu4oth5xakj"]
 
-[ext_resource type="Script" path="res://scenes/wave_test_base.gd" id="1_g2cpw"]
+[ext_resource type="Script" path="res://scripts/wave_test_base.gd" id="1_22fpw"]
 [ext_resource type="SpriteFrames" uid="uid://7hks6oosa2wf" path="res://sprites/spriteframes/reference_images.tres" id="2_8n3xv"]
 [ext_resource type="Texture2D" uid="uid://duiggn0xunlbk" path="res://sprites/background/state possibilities for figures_smooth.png" id="3_tccj0"]
 [ext_resource type="TileSet" uid="uid://ceslnnv7kwrox" path="res://resources/pool_tileset.tres" id="4_bpt7l"]
@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cssoasqyx24ox" path="res://sprites/background/WAVES colour.png" id="6_uux6l"]
 [ext_resource type="Theme" uid="uid://csc7fi523g83d" path="res://resources/Button_Theme.tres" id="7_xeku8"]
 [ext_resource type="SpriteFrames" uid="uid://c3pw0hnoa05jv" path="res://sprites/spriteframes/swimmers_spriteframe.tres" id="8_5dnti"]
-[ext_resource type="Script" path="res://scenes/wavemaker_movement.gd" id="9_qhwdr"]
+[ext_resource type="Script" path="res://scripts/wavemaker_movement.gd" id="9_4c3wd"]
 [ext_resource type="Texture2D" uid="uid://dqcdb04gpqre6" path="res://sprites/characters/cross_test_alpha.png" id="10_h3xq1"]
+[ext_resource type="Texture2D" uid="uid://dy5c5jcjaf88f" path="res://sprites/characters/speech_bubble_alpha.png" id="11_esmum"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ju0f"]
 bg_color = Color(0, 0, 0, 1)
@@ -36,8 +37,18 @@ animations = [{
 a = Vector2(-1, -198)
 b = Vector2(-1, 102)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbihb"]
+bg_color = Color(0.0588235, 0.709804, 0.694118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bh8na"]
+
 [node name="Wave_Test_Base" type="Node2D"]
-script = ExtResource("1_g2cpw")
+script = ExtResource("1_22fpw")
 
 [node name="Reference_Images" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.9, 0.898611)
@@ -1157,7 +1168,7 @@ layout_mode = 2
 theme = ExtResource("7_xeku8")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
-text = "Score: 0"
+text = "Score = 0"
 vertical_alignment = 1
 
 [node name="Round_Container" type="PanelContainer" parent="."]
@@ -1172,7 +1183,7 @@ layout_mode = 2
 theme = ExtResource("7_xeku8")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 21
-text = "Round: 0"
+text = "Round = 0"
 vertical_alignment = 1
 
 [node name="WL_Container" type="PanelContainer" parent="."]
@@ -1222,7 +1233,7 @@ text = "Score Bands: Off"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(159, 302)
-script = ExtResource("9_qhwdr")
+script = ExtResource("9_4c3wd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 scale = Vector2(0.091, 0.091)
@@ -1274,6 +1285,43 @@ layout_mode = 2
 theme = ExtResource("7_xeku8")
 theme_override_font_sizes/font_size = 21
 text = "Menu"
+
+[node name="Round_Box_Container" type="PanelContainer" parent="."]
+visible = false
+offset_left = 551.0
+offset_top = 278.0
+offset_right = 835.0
+offset_bottom = 338.0
+theme = ExtResource("7_xeku8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbihb")
+
+[node name="Round_Box_Label" type="Label" parent="Round_Box_Container"]
+layout_mode = 2
+theme = ExtResource("7_xeku8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Round: 0"
+
+[node name="SB_Container" type="PanelContainer" parent="."]
+visible = false
+offset_left = 666.0
+offset_top = 88.0
+offset_right = 920.0
+offset_bottom = 228.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bh8na")
+
+[node name="SpeechBubble" type="Sprite2D" parent="SB_Container"]
+position = Vector2(-18.0001, -71)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("11_esmum")
+centered = false
+
+[node name="SB_Label" type="Label" parent="SB_Container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Give me a wave with Excitment 5.5, and Vibes of 0.8. Something like this... "
+autowrap_mode = 3
 
 [connection signal="pressed" from="Button_Container/Go_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Stop_Button_Container/Stop_Button" to="." method="_on_stop_button_pressed"]

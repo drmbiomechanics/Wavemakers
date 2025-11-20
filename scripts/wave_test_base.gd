@@ -43,6 +43,7 @@ var req_wl_lower = 0.5
 var round = 0
 var swimmer_sprite = 0
 var player_wave_to_display = []
+var sb_text = "Give me a wave with Excitment 5.5, and Vibes of 0.8. Something like this... "
 
 
 
@@ -62,6 +63,7 @@ func _ready():
 	req_wl_lower = GlobalVariables.swimmer_wl_req_lower[round-1]
 	test_amplitude = (roundf((randf_range(req_amp_lower,req_amp_upper))*10))/10
 	test_wavelength = (roundf((randf_range(req_wl_lower,req_wl_upper))*10))/10
+	round_start_displays()
 	print(test_amplitude)
 	print(test_wavelength)
 	requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
@@ -145,6 +147,7 @@ func _process(delta):
 				req_wl_lower = GlobalVariables.swimmer_wl_req_lower[round-1]
 				test_amplitude = (roundf((randf_range(req_amp_lower,req_amp_upper))*10))/10
 				test_wavelength = (roundf((randf_range(req_wl_lower,req_wl_upper))*10))/10
+				round_start_displays()
 				print(test_amplitude)
 				print(test_wavelength)
 				requested_wave = make_wave(test_amplitude,test_wavelength,decay,x_resolution,time)
@@ -177,6 +180,7 @@ func update_round():
 	var round_line = ""
 	round_line = round_text +str(GlobalVariables.round)
 	$Round_Container/Round_Label.text = round_line
+	$Round_Box_Container/Round_Box_Label.text = round_line
 	
 func update_displays():
 	var amplitude_line = ""
@@ -1317,3 +1321,16 @@ func _on_menu_button_pressed():
 	GlobalVariables.game_score = 0
 	GlobalVariables.round = 1
 	get_tree().change_scene_to_file("res://scenes/animated_title.tscn")
+	
+func round_start_displays():
+	var sb_line_1 = "Give me a wave with Excitment "
+	var sb_line_2 = ", and Vibes of "
+	var sb_line_3 = ". Something like this..."
+	sb_text = sb_line_1 + str(test_amplitude) + sb_line_2 + str(test_wavelength) + sb_line_3
+	$SB_Container/SB_Label.text = sb_text
+	$Round_Box_Container.show()
+	await get_tree().create_timer(2).timeout
+	$Round_Box_Container.hide()
+	$SB_Container.show()
+	await get_tree().create_timer(3).timeout
+	$SB_Container.hide()
