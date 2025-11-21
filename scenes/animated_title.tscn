@@ -1086,6 +1086,7 @@ position = Vector2(542.654, 538)
 scale = Vector2(0.08, 0.08)
 sprite_frames = ExtResource("8_7wkwa")
 animation = &"Swimmer_Type_1"
+frame = 3
 centered = false
 offset = Vector2(-220, -415)
 
@@ -1102,6 +1103,7 @@ position = Vector2(828.338, 538)
 scale = Vector2(0.08, 0.08)
 sprite_frames = ExtResource("8_7wkwa")
 animation = &"Swimmer_Type_1"
+frame = 4
 centered = false
 offset = Vector2(-220, -415)
 
@@ -1148,9 +1150,9 @@ theme = ExtResource("7_mcpy5")
 text = "START"
 
 [node name="Sim_Container" type="PanelContainer" parent="."]
-offset_left = 629.0
+offset_left = 556.0
 offset_top = 299.0
-offset_right = 774.0
+offset_right = 701.0
 offset_bottom = 358.0
 theme = ExtResource("7_mcpy5")
 
@@ -1160,6 +1162,19 @@ theme = ExtResource("7_mcpy5")
 theme_override_font_sizes/font_size = 24
 text = "SIMULATION
 MODE"
+
+[node name="Tutorial_Container" type="PanelContainer" parent="."]
+offset_left = 706.0
+offset_top = 299.0
+offset_right = 851.0
+offset_bottom = 358.0
+theme = ExtResource("7_mcpy5")
+
+[node name="Tutorial_Button" type="Button" parent="Tutorial_Container"]
+layout_mode = 2
+theme = ExtResource("7_mcpy5")
+theme_override_font_sizes/font_size = 24
+text = "TUTORIAL"
 
 [node name="Quit_Container" type="PanelContainer" parent="."]
 offset_left = 856.0
@@ -1184,4 +1199,5 @@ text = "QUIT"
 [connection signal="toggled" from="Score_Band_Toggle_Container/Score_Band_Toggle" to="." method="_on_score_band_toggle_toggled"]
 [connection signal="pressed" from="Start_Container/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Sim_Container/Sim_Button" to="." method="_on_sim_button_pressed"]
+[connection signal="pressed" from="Tutorial_Container/Tutorial_Button" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="Quit_Container/Quit_Button" to="." method="_on_quit_button_pressed"]

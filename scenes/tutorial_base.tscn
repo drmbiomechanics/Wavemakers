@@ -1,0 +1,156 @@
+[gd_scene load_steps=18 format=3 uid="uid://dlw0mme5aw6n7"]
+
+[ext_resource type="Texture2D" uid="uid://lf0jds5pcckd" path="res://sprites/tutorial/Tutorial_1.PNG" id="1_cqlbn"]
+[ext_resource type="Script" path="res://scripts/tutorial_base.gd" id="1_eogng"]
+[ext_resource type="Texture2D" uid="uid://cjcfqopo1076k" path="res://sprites/tutorial/Tutorial_2.PNG" id="2_gnwy6"]
+[ext_resource type="Texture2D" uid="uid://ckgg7xqdmwybl" path="res://sprites/tutorial/Tutorial_3.PNG" id="3_2gxgt"]
+[ext_resource type="Texture2D" uid="uid://bncdbbg1ge426" path="res://sprites/tutorial/Tutorial_4.PNG" id="4_lj480"]
+[ext_resource type="Texture2D" uid="uid://d2sj4gyanhnxt" path="res://sprites/tutorial/Tutorial_5.PNG" id="5_umhwr"]
+[ext_resource type="Texture2D" uid="uid://bipc6k25kgje0" path="res://sprites/tutorial/Tutorial_6.PNG" id="6_g1oa7"]
+[ext_resource type="Texture2D" uid="uid://bsgjb8jotmjfr" path="res://sprites/tutorial/Tutorial_7.PNG" id="7_m5rnu"]
+[ext_resource type="Texture2D" uid="uid://dsw4tolewsmjr" path="res://sprites/tutorial/Tutorial_8.PNG" id="8_f4tx3"]
+[ext_resource type="Texture2D" uid="uid://cf81ela6dt4qb" path="res://sprites/tutorial/Tutorial_9.PNG" id="9_j17t0"]
+[ext_resource type="Texture2D" uid="uid://ijdqq0gtc3if" path="res://sprites/tutorial/Tutorial_10.PNG" id="10_0gj82"]
+[ext_resource type="Theme" uid="uid://csc7fi523g83d" path="res://resources/Button_Theme.tres" id="12_ii6fj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_65oqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cqlbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gnwy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2gxgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lj480")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_umhwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g1oa7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m5rnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_f4tx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_j17t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_0gj82")
+}],
+"loop": true,
+"name": &"tutorial_slides",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81yk1"]
+bg_color = Color(0.956863, 0.709804, 0.894118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt018"]
+bg_color = Color(0.956863, 0.709804, 0.894118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtq63"]
+bg_color = Color(0.956863, 0.709804, 0.894118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmjx3"]
+bg_color = Color(0.956863, 0.709804, 0.894118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[node name="Tutorial_Base" type="Node2D"]
+script = ExtResource("1_eogng")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 7)
+anchor_mode = 0
+zoom = Vector2(1.04, 1.04)
+
+[node name="Tutorial_Sprites" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.868, 0.873611)
+sprite_frames = SubResource("SpriteFrames_65oqn")
+animation = &"tutorial_slides"
+centered = false
+
+[node name="Previous_Container" type="PanelContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("12_ii6fj")
+
+[node name="Previous_Button" type="Button" parent="Previous_Container"]
+layout_mode = 2
+theme = ExtResource("12_ii6fj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_81yk1")
+text = "Previous"
+
+[node name="Next_Container" type="PanelContainer" parent="."]
+offset_left = 1013.0
+offset_right = 1111.0
+offset_bottom = 40.0
+theme = ExtResource("12_ii6fj")
+
+[node name="Next_Button" type="Button" parent="Next_Container"]
+layout_mode = 2
+theme = ExtResource("12_ii6fj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_pt018")
+text = "Next"
+
+[node name="Return_Container" type="PanelContainer" parent="."]
+offset_left = 450.0
+offset_right = 619.0
+offset_bottom = 40.0
+theme = ExtResource("12_ii6fj")
+
+[node name="Return_Button" type="Button" parent="Return_Container"]
+layout_mode = 2
+theme = ExtResource("12_ii6fj")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtq63")
+text = "Return to Menu"
+
+[node name="Page_Container" type="PanelContainer" parent="."]
+offset_left = -1.0
+offset_top = 589.0
+offset_right = 67.0
+offset_bottom = 629.0
+theme = ExtResource("12_ii6fj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_gmjx3")
+
+[node name="Page_Label" type="Label" parent="Page_Container"]
+layout_mode = 2
+theme = ExtResource("12_ii6fj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "10/10"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Previous_Container/Previous_Button" to="." method="_on_previous_button_pressed"]
+[connection signal="pressed" from="Next_Container/Next_Button" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="Return_Container/Return_Button" to="." method="_on_return_button_pressed"]
